@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Message Received — Ibom Space</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23090C10'/><text y='.9em' font-size='80' fill='%2300D4FF'>I</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#090C10;--surface:#0E1218;--card:#131820;
+  --rule:rgba(255,255,255,0.07);--muted:rgba(255,255,255,0.3);
+  --body:rgba(255,255,255,0.6);--light:rgba(255,255,255,0.88);
+  --white:#F0F4F8;--accent:#00D4FF;--accent2:#0099BB;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{
+  background:var(--bg);color:var(--light);
+  font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;
+  min-height:100vh;display:flex;flex-direction:column;
+}
+body::after{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:9999;
+}
+.grid-lines{
+  position:fixed;inset:0;
+  background-image:linear-gradient(rgba(0,212,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.02) 1px,transparent 1px);
+  background-size:80px 80px;pointer-events:none;z-index:0;
+}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 48px;
+  background:rgba(9,12,16,0.95);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--rule);
+}
+.nav-logo{
+  font-family:'Bebas Neue',sans-serif;font-size:18px;
+  letter-spacing:0.12em;color:var(--white);text-decoration:none;
+  display:flex;align-items:center;gap:8px;
+}
+.nav-logo-mark{
+  width:22px;height:22px;border:1px solid var(--accent);
+  display:flex;align-items:center;justify-content:center;
+}
+.nav-logo-mark span{font-family:'Bebas Neue',sans-serif;font-size:12px;color:var(--accent);}
+.nav-logo:hover{color:var(--accent);}
+.accent-bar{height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);}
+
+main{
+  flex:1;display:flex;align-items:center;justify-content:center;
+  padding:140px 24px 80px;position:relative;z-index:1;
+}
+.thanks-wrap{
+  max-width:640px;width:100%;
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;
+}
+
+/* Animated check / signal icon */
+.thanks-icon{
+  width:72px;height:72px;
+  border:1px solid rgba(0,212,255,0.3);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;margin-bottom:40px;
+  animation:iconPulse 3s ease-in-out infinite;
+}
+.thanks-icon::before{
+  content:'';position:absolute;inset:-8px;
+  border:1px solid rgba(0,212,255,0.12);
+  animation:ringExpand 2.5s ease-out infinite;
+}
+.thanks-icon::after{
+  content:'';position:absolute;inset:-20px;
+  border:1px solid rgba(0,212,255,0.05);
+  animation:ringExpand 2.5s ease-out 0.5s infinite;
+}
+.thanks-icon svg{position:relative;z-index:1;}
+
+@keyframes iconPulse{
+  0%,100%{border-color:rgba(0,212,255,0.3);box-shadow:0 0 0 rgba(0,212,255,0);}
+  50%{border-color:rgba(0,212,255,0.6);box-shadow:0 0 32px rgba(0,212,255,0.12);}
+}
+@keyframes ringExpand{
+  0%{transform:scale(1);opacity:0.8;}
+  100%{transform:scale(1.6);opacity:0;}
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+
+.thanks-eyebrow{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:0.24em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:20px;
+  display:flex;align-items:center;gap:14px;
+  animation:fadeUp 0.7s ease 0.1s both;
+}
+.thanks-eyebrow::before,.thanks-eyebrow::after{
+  content:'';display:block;width:32px;height:1px;
+  background:var(--accent);opacity:0.4;
+}
+h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(52px,8vw,100px);
+  line-height:0.88;letter-spacing:0.02em;
+  color:var(--white);margin-bottom:28px;
+  animation:fadeUp 0.7s ease 0.2s both;
+}
+h1 .acc{color:var(--accent);}
+.thanks-body{
+  font-size:16px;color:var(--body);
+  line-height:1.85;max-width:500px;
+  margin-bottom:48px;
+  animation:fadeUp 0.7s ease 0.35s both;
+}
+.thanks-body strong{color:var(--light);font-weight:500;}
+.thanks-actions{
+  display:flex;gap:16px;flex-wrap:wrap;
+  justify-content:center;
+  animation:fadeUp 0.7s ease 0.5s both;
+}
+.btn-primary{
+  font-family:'DM Mono',monospace;font-size:11px;
+  letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--bg);background:var(--accent);
+  padding:14px 36px;text-decoration:none;
+  font-weight:500;
+  transition:background 0.2s,transform 0.15s,box-shadow 0.2s;
+  display:inline-block;
+}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,212,255,0.3);}
+.btn-ghost{
+  font-family:'DM Mono',monospace;font-size:11px;
+  letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--accent);border:1px solid rgba(0,212,255,0.3);
+  padding:14px 36px;text-decoration:none;
+  transition:all 0.2s;display:inline-block;
+}
+.btn-ghost:hover{background:rgba(0,212,255,0.08);border-color:var(--accent);transform:translateY(-2px);}
+
+.thanks-divider{
+  width:1px;height:60px;background:var(--rule);
+  margin:48px auto;
+  animation:fadeUp 0.7s ease 0.65s both;
+}
+.thanks-nav{
+  display:flex;gap:32px;flex-wrap:wrap;justify-content:center;
+  animation:fadeUp 0.7s ease 0.75s both;
+}
+.thanks-nav a{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;
+  transition:color 0.2s;
+}
+.thanks-nav a:hover{color:var(--accent);}
+
+footer{
+  position:relative;z-index:1;
+  border-top:1px solid var(--rule);padding:32px 24px;
+  text-align:center;background:var(--surface);
+}
+.footer-logo{
+  font-family:'Bebas Neue',sans-serif;font-size:16px;
+  letter-spacing:0.1em;color:var(--white);
+  margin-bottom:8px;display:flex;
+  align-items:center;justify-content:center;gap:6px;
+}
+.footer-logo-mark{width:18px;height:18px;border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;}
+.footer-logo-mark span{font-family:'Bebas Neue',sans-serif;font-size:10px;color:var(--accent);}
+.footer-usg{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.12em;color:var(--accent);text-transform:uppercase;opacity:0.6;margin-bottom:8px;}
+.footer-copy{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--muted);text-transform:uppercase;opacity:0.4;}
+
+@media(max-width:768px){
+  nav{padding:16px 20px;}
+  main{padding:120px 20px 60px;}
+  .thanks-actions{flex-direction:column;width:100%;}
+  .btn-primary,.btn-ghost{width:100%;text-align:center;}
+}
+</style>
+</head>
+<body>
+<div class="grid-lines"></div>
+<div class="accent-bar"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-mark"><span>I</span></div>
+    IBOM SPACE
+  </a>
+</nav>
+
+<main>
+  <div class="thanks-wrap">
+    <div class="thanks-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00D4FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+
+    <div class="thanks-eyebrow">Message Received</div>
+    <h1>WE HAVE<br>YOUR <span class="acc">SIGNAL.</span></h1>
+    <p class="thanks-body">
+      Your message is in. Someone from the Ibom Space program will be in touch directly.<br><br>
+      <strong>We are building something that does not exist yet. The right conversations are how it gets built.</strong>
+    </p>
+    <div class="thanks-actions">
+      <a href="index.html" class="btn-primary">← Back to Ibom Space</a>
+      <a href="caelum.html" class="btn-ghost">Explore Caelum</a>
+    </div>
+
+    <div class="thanks-divider"></div>
+
+    <div class="thanks-nav">
+      <a href="index.html#problem">The Problem</a>
+      <a href="caelum.html">Caelum Division</a>
+      <a href="hartwigg.html">Hartwigg Propulsion</a>
+      <a href="index.html#join">Partner With Us</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-logo"><div class="footer-logo-mark"><span>I</span></div>IBOM SPACE</div>
+  <div class="footer-usg">A Umanah Systems Group Program</div>
+  <div class="footer-copy">© 2026 Ibom Space. All rights reserved.</div>
+</footer>
+</body>
+</html>

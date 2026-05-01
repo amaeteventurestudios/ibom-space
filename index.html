@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Ibom Space — Persistent. Multi-Capable. Affordable.</title>
+<meta name="description" content="Ibom Space is a USG program delivering unified multi-band communications, optical sensing, and long-duration iodine propulsion for CubeSat and smallsat missions. Built for LEO, lunar, and deep space.">
+<meta name="keywords" content="Ibom Space, smallsat propulsion, CubeSat communications, iodine Hall thruster, multi-band payload, space architecture, Umanah Systems Group, USG, electric propulsion">
+<meta name="author" content="Ibom Space — A Umanah Systems Group Program">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#090C10">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ibomspace.com/">
+<meta property="og:title" content="Ibom Space — Persistent. Multi-Capable. Affordable.">
+<meta property="og:description" content="The only CubeSat-native architecture that unifies multi-band RF, optical transport, and long-duration iodine propulsion in a single program. Built for the missions that matter.">
+<meta property="og:image" content="https://ibomspace.com/og-image.png">
+<meta property="og:image:url" content="https://ibomspace.com/og-image.png">
+<meta property="og:image:secure_url" content="https://ibomspace.com/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="Ibom Space — Persistent. Multi-Capable. Affordable.">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Ibom Space">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ibom Space — Persistent. Multi-Capable. Affordable.">
+<meta name="twitter:description" content="The only CubeSat-native architecture that unifies multi-band RF, optical transport, and long-duration iodine propulsion in a single program.">
+<meta name="twitter:image" content="https://ibomspace.com/og-image.png">
+<link rel="canonical" href="https://ibomspace.com/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23090C10'/><text y='.9em' font-size='80' fill='%2300D4FF'>I</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+:root {
+  --bg:       #090C10;
+  --surface:  #0E1218;
+  --card:     #131820;
+  --card2:    #181E28;
+  --rule:     rgba(255,255,255,0.07);
+  --rule2:    rgba(255,255,255,0.04);
+  --muted:    rgba(255,255,255,0.3);
+  --body:     rgba(255,255,255,0.6);
+  --light:    rgba(255,255,255,0.88);
+  --white:    #F0F4F8;
+  --accent:   #00D4FF;
+  --accent2:  #0099BB;
+  --accent3:  rgba(0,212,255,0.08);
+  --gold:     #F5C842;
+  --cta:      #00D4FF;
+  --cta2:     #0099BB;
+  --caelum:   #00D4FF;
+  --hartwigg: #F5C842;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{
+  background:var(--bg);
+  color:var(--light);
+  font-family:'DM Sans',sans-serif;
+  font-weight:300;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+/* NOISE TEXTURE */
+body::after{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:9999;
+}
+
+/* GRID OVERLAY */
+.grid-lines{
+  position:fixed;inset:0;
+  background-image:
+    linear-gradient(rgba(0,212,255,0.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,212,255,0.025) 1px,transparent 1px);
+  background-size:80px 80px;
+  pointer-events:none;z-index:0;
+}
+
+/* PAGE WRAP */
+.page-wrap{max-width:1120px;margin:0 auto;position:relative;border-left:1px solid var(--rule);border-right:1px solid var(--rule);overflow:hidden;}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(36px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes slideDown{from{opacity:0;transform:translateY(-16px);}to{opacity:1;transform:translateY(0);}}
+@keyframes pulse{0%,100%{opacity:0.6;}50%{opacity:1;}}
+@keyframes scanline{0%{transform:translateY(-100%);}100%{transform:translateY(100vh);}}
+@keyframes glow{0%,100%{text-shadow:0 0 20px rgba(0,212,255,0.0);}50%{text-shadow:0 0 60px rgba(0,212,255,0.25),0 0 120px rgba(0,212,255,0.1);}}
+@keyframes orbit{0%{transform:rotate(0deg) translateX(90px) rotate(0deg);}100%{transform:rotate(360deg) translateX(90px) rotate(-360deg);}}
+@keyframes counterUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+@keyframes borderPulse{0%,100%{border-color:rgba(0,212,255,0.15);}50%{border-color:rgba(0,212,255,0.4);}}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  background:rgba(9,12,16,0.92);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--rule);
+  animation:slideDown 0.6s ease both;
+  display:flex;justify-content:center;
+}
+.nav-inner{
+  width:100%;max-width:1120px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 48px;
+  transition:padding 0.3s ease;
+}
+.nav-logo{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:20px;letter-spacing:0.12em;
+  color:var(--white);text-decoration:none;
+  transition:color 0.2s;display:flex;align-items:center;gap:8px;
+}
+.nav-logo-mark{
+  width:26px;height:26px;
+  border:1px solid var(--accent);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.nav-logo-mark::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(0,212,255,0.15),transparent);
+}
+.nav-logo-mark span{font-family:'Bebas Neue',sans-serif;font-size:14px;color:var(--accent);position:relative;z-index:1;}
+.nav-logo:hover{color:var(--accent);}
+.nav-links{display:flex;gap:36px;list-style:none;}
+.nav-links a{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;
+  transition:color 0.2s;position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-2px;left:0;
+  width:0;height:1px;background:var(--accent);
+  transition:width 0.3s ease;
+}
+.nav-links a:hover{color:var(--accent);}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--bg);background:var(--cta);
+  padding:10px 22px;text-decoration:none;
+  font-weight:500;transition:background 0.2s,transform 0.15s,box-shadow 0.2s;
+}
+.nav-cta:hover{background:var(--cta2);transform:translateY(-1px);box-shadow:0 4px 20px rgba(0,212,255,0.3);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:24px;height:1px;background:var(--light);transition:all 0.3s;}
+.mobile-menu{
+  display:none;position:fixed;top:60px;left:0;right:0;
+  background:rgba(9,12,16,0.98);border-bottom:1px solid var(--rule);
+  padding:28px 24px;z-index:499;flex-direction:column;align-items:center;gap:24px;
+}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{
+  font-family:'DM Mono',monospace;font-size:12px;
+  letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:color 0.2s;
+}
+.mobile-menu a:hover{color:var(--accent);}
+.mobile-menu .nav-cta{margin-top:8px;color:var(--bg);}
+
+/* ACCENT BAR */
+.accent-bar{height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);position:relative;z-index:1;}
+
+/* ═══════════════════════════════════
+   HERO
+═══════════════════════════════════ */
+#hero{
+  position:relative;min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  padding:140px 24px 80px;overflow:hidden;
+}
+.hero-radial{
+  position:absolute;top:10%;left:50%;transform:translate(-50%,-50%);
+  width:900px;height:900px;
+  background:radial-gradient(ellipse,rgba(0,212,255,0.04) 0%,transparent 65%);
+  pointer-events:none;
+}
+.hero-radial-2{
+  position:absolute;bottom:-10%;right:-10%;
+  width:500px;height:500px;
+  background:radial-gradient(ellipse,rgba(245,200,66,0.03) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-bg-text{
+  position:absolute;bottom:-40px;left:50%;transform:translateX(-50%);
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(100px,20vw,280px);
+  color:rgba(0,212,255,0.015);
+  letter-spacing:0.06em;line-height:1;
+  pointer-events:none;user-select:none;white-space:nowrap;
+}
+/* Orbit animation */
+.hero-orbit{
+  position:absolute;top:50%;left:50%;
+  width:200px;height:200px;
+  margin:-100px 0 0 -100px;
+  border:1px solid rgba(0,212,255,0.06);
+  border-radius:50%;
+  pointer-events:none;
+}
+.hero-orbit::before{
+  content:'';position:absolute;top:50%;left:50%;
+  width:4px;height:4px;margin:-2px 0 0 -2px;
+  background:var(--accent);border-radius:50%;
+  animation:orbit 8s linear infinite;
+  box-shadow:0 0 8px var(--accent);
+}
+.hero-orbit-2{
+  position:absolute;top:50%;left:50%;
+  width:340px;height:340px;
+  margin:-170px 0 0 -170px;
+  border:1px solid rgba(245,200,66,0.04);
+  border-radius:50%;
+  pointer-events:none;
+}
+.hero-orbit-2::before{
+  content:'';position:absolute;top:50%;left:50%;
+  width:3px;height:3px;margin:-1.5px 0 0 -1.5px;
+  background:var(--gold);border-radius:50%;
+  animation:orbit 14s linear infinite reverse;
+  box-shadow:0 0 6px var(--gold);
+}
+.hero-content{
+  position:relative;z-index:1;
+  max-width:960px;width:100%;
+  display:flex;flex-direction:column;align-items:center;
+}
+.hero-eyebrow{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:0.26em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:32px;
+  display:flex;align-items:center;justify-content:center;gap:16px;
+  animation:fadeIn 0.8s ease 0.2s both;
+}
+.hero-eyebrow::before,.hero-eyebrow::after{
+  content:'';display:block;width:40px;height:1px;background:var(--accent);opacity:0.5;
+}
+.hero-headline{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(72px,13vw,165px);
+  line-height:0.88;letter-spacing:0.02em;
+  margin-bottom:36px;color:var(--white);
+  animation:fadeUp 0.9s ease 0.3s both;
+  text-align:center;
+}
+.hero-headline .acc{
+  color:var(--accent);
+  animation:glow 5s ease-in-out infinite;
+  display:inline-block;
+}
+.hero-headline .acc2{color:var(--gold);}
+.hero-sub{
+  font-size:clamp(15px,1.8vw,18px);
+  color:var(--body);max-width:620px;
+  line-height:1.8;margin-bottom:52px;
+  font-weight:300;text-align:center;
+  animation:fadeUp 0.9s ease 0.48s both;
+}
+.hero-sub strong{color:var(--light);font-weight:500;}
+.hero-actions{
+  display:flex;gap:16px;align-items:center;
+  justify-content:center;flex-wrap:wrap;
+  animation:fadeUp 0.9s ease 0.62s both;
+}
+.btn-primary{
+  font-family:'DM Mono',monospace;font-size:11px;
+  letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--bg);background:var(--cta);
+  padding:16px 40px;text-decoration:none;
+  font-weight:500;
+  transition:background 0.2s,transform 0.15s,box-shadow 0.2s;
+  display:inline-block;
+}
+.btn-primary:hover{background:var(--cta2);transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,212,255,0.3);}
+.btn-ghost{
+  font-family:'DM Mono',monospace;font-size:11px;
+  letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--accent);border:1px solid rgba(0,212,255,0.35);
+  padding:16px 40px;text-decoration:none;
+  transition:background 0.2s,color 0.2s,transform 0.15s,border-color 0.2s;
+  display:inline-block;
+}
+.btn-ghost:hover{background:rgba(0,212,255,0.1);border-color:var(--accent);transform:translateY(-2px);}
+
+.hero-visual-wrap{
+  width:100%;max-width:960px;margin-top:72px;
+  animation:fadeUp 0.9s ease 0.78s both;
+}
+.hero-visual{
+  width:100%;aspect-ratio:16/9;
+  background:var(--card);border:1px solid var(--rule);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;position:relative;
+}
+.hero-visual img{width:100%;height:100%;object-fit:cover;display:block;}
+.img-placeholder{
+  display:flex;flex-direction:column;align-items:center;
+  gap:12px;color:var(--muted);
+}
+.img-placeholder svg{opacity:0.3;}
+.img-placeholder span{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:0.16em;text-transform:uppercase;
+  text-align:center;max-width:320px;line-height:1.6;
+}
+.hero-visual-label{
+  position:absolute;top:16px;left:16px;
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--accent);opacity:0.6;
+}
+.hero-visual-corner{
+  position:absolute;width:20px;height:20px;
+  border-color:rgba(0,212,255,0.4);border-style:solid;
+}
+.hero-visual-corner.tl{top:8px;left:8px;border-width:1px 0 0 1px;}
+.hero-visual-corner.tr{top:8px;right:8px;border-width:1px 1px 0 0;}
+.hero-visual-corner.bl{bottom:8px;left:8px;border-width:0 0 1px 1px;}
+.hero-visual-corner.br{bottom:8px;right:8px;border-width:0 1px 1px 0;}
+
+.hero-stats{
+  display:flex;margin-top:1px;
+  border:1px solid var(--rule);border-top:none;
+  background:var(--rule);width:100%;gap:1px;
+}
+.hero-stat{
+  flex:1;padding:22px 16px;
+  background:var(--card);
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;
+}
+.hero-stat-num{
+  font-family:'Bebas Neue',sans-serif;font-size:30px;
+  color:var(--accent);line-height:1;
+}
+.hero-stat-num.gold{color:var(--gold);}
+.hero-stat-label{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--muted);margin-top:6px;line-height:1.5;
+}
+
+/* ═══════════════════════════════════
+   SECTIONS COMMON
+═══════════════════════════════════ */
+.section{position:relative;z-index:1;padding:120px 24px;border-top:1px solid var(--rule);}
+.section-inner{max-width:1072px;margin:0 auto;display:flex;flex-direction:column;align-items:center;}
+.section-label{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:0.24em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:24px;
+  display:flex;align-items:center;justify-content:center;gap:14px;
+}
+.section-label::before,.section-label::after{content:'';display:block;width:36px;height:1px;background:var(--accent);opacity:0.5;}
+.section-label.gold-label{color:var(--gold);}
+.section-label.gold-label::before,.section-label.gold-label::after{background:var(--gold);}
+h2.section-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(42px,5.5vw,80px);
+  letter-spacing:0.02em;line-height:0.9;
+  margin-bottom:28px;text-align:center;
+  color:var(--white);
+}
+h2.section-title .acc{color:var(--accent);}
+h2.section-title .gold{color:var(--gold);}
+.section-body{
+  font-size:16px;color:var(--body);
+  max-width:640px;line-height:1.85;
+  margin-bottom:16px;text-align:center;
+}
+.section-body strong{color:var(--light);font-weight:500;}
+
+/* ═══════════════════════════════════
+   THE PROBLEM — DARK SECTION
+═══════════════════════════════════ */
+#problem{background:var(--surface);}
+.problem-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:1px;background:var(--rule);border:1px solid var(--rule);
+  width:100%;margin-top:56px;
+}
+.problem-card{
+  background:var(--card);padding:40px 28px;
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;position:relative;overflow:hidden;
+  transition:background 0.25s;
+}
+.problem-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  transform:scaleX(0);transition:transform 0.4s ease;
+}
+.problem-card:hover{background:var(--card2);}
+.problem-card:hover::before{transform:scaleX(1);}
+.problem-num{
+  font-family:'Bebas Neue',sans-serif;font-size:56px;
+  color:var(--accent);line-height:1;margin-bottom:8px;
+}
+.problem-unit{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:18px;line-height:1.6;
+}
+.problem-desc{font-size:13px;color:var(--body);line-height:1.75;}
+
+.problem-statement{
+  margin-top:56px;padding:44px 48px;
+  border:1px solid rgba(0,212,255,0.12);
+  background:rgba(0,212,255,0.04);
+  max-width:780px;width:100%;position:relative;
+  animation:borderPulse 4s ease infinite;
+}
+.problem-statement::before{
+  content:'"';position:absolute;top:-24px;left:28px;
+  font-family:'Bebas Neue',sans-serif;font-size:96px;
+  color:rgba(0,212,255,0.06);line-height:1;
+}
+.problem-statement p{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(18px,2.4vw,26px);
+  color:var(--light);line-height:1.45;letter-spacing:0.02em;
+  text-align:center;
+}
+.problem-statement cite{
+  display:block;margin-top:20px;
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--accent);font-style:normal;text-align:center;
+}
+
+/* ═══════════════════════════════════
+   CAELUM SECTION
+═══════════════════════════════════ */
+#caelum{background:var(--bg);}
+.division-header{
+  display:flex;flex-direction:column;align-items:center;
+  width:100%;margin-bottom:64px;
+}
+.division-tag{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:0.24em;text-transform:uppercase;
+  color:var(--bg);background:var(--accent);
+  padding:5px 14px;margin-bottom:20px;display:inline-block;
+}
+.division-tag.hartwigg-tag{background:var(--gold);color:var(--bg);}
+.division-name{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(56px,9vw,120px);
+  letter-spacing:0.04em;line-height:0.85;
+  color:var(--white);margin-bottom:20px;text-align:center;
+}
+.division-name .acc{color:var(--accent);}
+.division-name .gold{color:var(--gold);}
+.division-tagline{
+  font-family:'DM Mono',monospace;font-size:11px;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--muted);text-align:center;max-width:540px;
+  line-height:1.7;
+}
+
+.division-visual{
+  width:100%;aspect-ratio:16/7;
+  background:var(--card);border:1px solid var(--rule);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;position:relative;margin-bottom:1px;
+}
+.division-visual img{width:100%;height:100%;object-fit:cover;display:block;}
+.division-visual-label{
+  position:absolute;bottom:16px;right:16px;
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:0.16em;text-transform:uppercase;
+  color:rgba(0,212,255,0.5);
+}
+
+.cap-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:var(--rule);border:1px solid var(--rule);
+  width:100%;margin-top:0;
+}
+.cap-card{
+  background:var(--card);padding:36px 24px;
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;position:relative;overflow:hidden;
+  transition:background 0.25s;
+}
+.cap-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:var(--accent);transform:scaleX(0);
+  transition:transform 0.35s ease;transform-origin:center;
+}
+.cap-card:hover{background:var(--card2);}
+.cap-card:hover::after{transform:scaleX(1);}
+.cap-icon{
+  font-family:'Bebas Neue',sans-serif;font-size:40px;
+  color:var(--accent);opacity:0.25;line-height:1;
+  margin-bottom:14px;transition:opacity 0.25s;
+}
+.cap-card:hover .cap-icon{opacity:0.7;}
+.cap-title{font-size:13px;font-weight:600;color:var(--light);margin-bottom:10px;letter-spacing:0.03em;}
+.cap-desc{font-size:12px;color:var(--body);line-height:1.7;}
+.cap-spec{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:0.1em;color:var(--accent);
+  margin-top:10px;line-height:1.6;opacity:0.7;
+}
+
+/* Hartwigg gold accents */
+.hartwigg-card::after{background:var(--gold);}
+.hartwigg-card .cap-icon{color:var(--gold);}
+.hartwigg-card:hover .cap-icon{opacity:0.7;}
+.hartwigg-card .cap-spec{color:var(--gold);}
+
+/* ═══════════════════════════════════
+   HARTWIGG SECTION
+═══════════════════════════════════ */
+#hartwigg{background:var(--surface);}
+
+/* ═══════════════════════════════════
+   THE PLATFORM STORY
+═══════════════════════════════════ */
+#platform{background:var(--bg);}
+.platform-split{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:var(--rule);border:1px solid var(--rule);
+  width:100%;margin-top:56px;
+}
+.platform-half{
+  background:var(--card);padding:52px 40px;
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;position:relative;overflow:hidden;
+}
+.platform-half::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+}
+.platform-half.caelum-half::before{background:linear-gradient(90deg,transparent,var(--caelum),transparent);}
+.platform-half.hartwigg-half::before{background:linear-gradient(90deg,transparent,var(--hartwigg),transparent);}
+.platform-label{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:0.22em;text-transform:uppercase;
+  margin-bottom:14px;
+}
+.platform-label.c{color:var(--caelum);}
+.platform-label.h{color:var(--hartwigg);}
+.platform-half h3{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(32px,4vw,52px);letter-spacing:0.04em;
+  color:var(--white);margin-bottom:16px;line-height:0.9;
+}
+.platform-half p{font-size:14px;color:var(--body);line-height:1.8;max-width:340px;}
+.platform-link{
+  display:inline-block;margin-top:28px;
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:0.16em;text-transform:uppercase;
+  text-decoration:none;padding:10px 24px;
+  transition:background 0.2s,transform 0.15s;
+}
+.platform-link.c{color:var(--caelum);border:1px solid rgba(0,212,255,0.25);}
+.platform-link.c:hover{background:rgba(0,212,255,0.1);border-color:var(--caelum);transform:translateY(-2px);}
+.platform-link.h{color:var(--hartwigg);border:1px solid rgba(245,200,66,0.25);}
+.platform-link.h:hover{background:rgba(245,200,66,0.08);border-color:var(--hartwigg);transform:translateY(-2px);}
+
+.platform-together{
+  margin-top:1px;width:100%;
+  background:rgba(0,212,255,0.04);
+  border:1px solid rgba(0,212,255,0.1);border-top:none;
+  padding:48px 40px;
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+}
+.platform-together p{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(20px,2.8vw,32px);
+  color:var(--light);line-height:1.4;
+  max-width:720px;letter-spacing:0.02em;
+}
+.platform-together p em{color:var(--accent);font-style:normal;}
+
+/* ═══════════════════════════════════
+   WHY NOW — MARKET DATA
+═══════════════════════════════════ */
+#why{background:var(--surface);}
+.why-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:var(--rule);border:1px solid var(--rule);
+  width:100%;margin-top:56px;
+}
+.why-card{
+  background:var(--card);padding:40px 28px;
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;position:relative;overflow:hidden;
+  transition:background 0.25s;
+}
+.why-card:hover{background:var(--card2);}
+.why-num{
+  font-family:'Bebas Neue',sans-serif;font-size:52px;
+  color:var(--accent);line-height:1;margin-bottom:6px;
+}
+.why-unit{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:18px;
+}
+.why-desc{font-size:13px;color:var(--body);line-height:1.75;}
+.why-source{
+  font-family:'DM Mono',monospace;font-size:8px;
+  letter-spacing:0.1em;color:var(--muted);
+  margin-top:10px;opacity:0.5;
+}
+
+/* ═══════════════════════════════════
+   JOIN US — PARTNER SECTION
+═══════════════════════════════════ */
+#join{background:var(--bg);}
+.join-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:1px;background:var(--rule);border:1px solid var(--rule);
+  width:100%;margin-top:56px;
+}
+.join-card{
+  background:var(--card);padding:44px 36px;
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;position:relative;overflow:hidden;
+  transition:background 0.25s;
+}
+.join-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  transform:scaleX(0);transition:transform 0.4s ease;
+}
+.join-card:hover::before{transform:scaleX(1);}
+.join-card:hover{background:var(--card2);}
+.join-icon{
+  font-family:'Bebas Neue',sans-serif;font-size:44px;
+  color:var(--accent);opacity:0.2;line-height:1;
+  margin-bottom:16px;transition:opacity 0.25s;
+}
+.join-card:hover .join-icon{opacity:0.6;}
+.join-title{font-size:15px;font-weight:600;color:var(--light);margin-bottom:12px;letter-spacing:0.02em;}
+.join-body{font-size:13px;color:var(--body);line-height:1.8;}
+.join-cta{
+  display:inline-block;margin-top:24px;
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--accent);text-decoration:none;
+  border-bottom:1px solid rgba(0,212,255,0.25);
+  padding-bottom:2px;transition:border-color 0.2s,color 0.2s;
+}
+.join-cta:hover{border-color:var(--accent);color:var(--white);}
+
+/* ═══════════════════════════════════
+   TRL STATUS BAR
+═══════════════════════════════════ */
+#trl{background:var(--surface);padding:80px 24px;}
+.trl-inner{max-width:1072px;margin:0 auto;display:flex;flex-direction:column;align-items:center;}
+.trl-track{
+  width:100%;max-width:700px;
+  display:flex;align-items:center;
+  margin-top:40px;gap:0;
+}
+.trl-step{
+  flex:1;display:flex;flex-direction:column;align-items:center;
+  position:relative;
+}
+.trl-dot{
+  width:10px;height:10px;border-radius:50%;
+  background:rgba(255,255,255,0.1);
+  border:1px solid var(--rule);
+  transition:background 0.3s,box-shadow 0.3s;
+  position:relative;z-index:1;
+}
+.trl-step.done .trl-dot{background:var(--accent);border-color:var(--accent);box-shadow:0 0 10px rgba(0,212,255,0.4);}
+.trl-step.active .trl-dot{background:var(--accent);border-color:var(--accent);box-shadow:0 0 16px rgba(0,212,255,0.6);animation:pulse 2s ease-in-out infinite;}
+.trl-line{
+  position:absolute;top:5px;left:50%;right:-50%;
+  height:1px;background:var(--rule);z-index:0;
+}
+.trl-step.done .trl-line{background:var(--accent);opacity:0.5;}
+.trl-label{
+  font-family:'DM Mono',monospace;font-size:8px;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--muted);margin-top:10px;text-align:center;
+}
+.trl-step.active .trl-label{color:var(--accent);}
+.trl-num{font-family:'Bebas Neue',sans-serif;font-size:13px;color:var(--muted);}
+.trl-step.active .trl-num{color:var(--accent);}
+.trl-note{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--muted);margin-top:32px;text-align:center;
+  line-height:1.7;max-width:560px;
+}
+.trl-note strong{color:var(--accent);}
+
+/* ═══════════════════════════════════
+   CONTACT
+═══════════════════════════════════ */
+#contact{background:var(--bg);}
+.contact-form{
+  display:flex;flex-direction:column;
+  gap:1px;background:var(--rule);border:1px solid var(--rule);
+  width:100%;max-width:640px;margin-top:52px;
+}
+.form-field{background:var(--card);display:flex;flex-direction:column;}
+.form-label{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--accent);padding:16px 20px 0;
+}
+.form-field input,.form-field select,.form-field textarea{
+  background:transparent;border:none;outline:none;
+  color:var(--light);
+  font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;
+  padding:8px 20px 16px;width:100%;resize:none;
+  -webkit-appearance:none;
+}
+.form-field select{cursor:pointer;color:var(--light);}
+.form-field select option{background:var(--card2);color:var(--light);}
+.form-field input::placeholder,.form-field textarea::placeholder{color:var(--muted);}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{
+  background:rgba(0,212,255,0.03);
+}
+.form-submit{background:var(--card);padding:20px;display:flex;justify-content:center;}
+.form-submit button{
+  width:100%;font-family:'DM Mono',monospace;font-size:11px;
+  letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--bg);background:var(--cta);
+  border:none;padding:18px 32px;cursor:pointer;
+  font-weight:500;
+  transition:background 0.2s,transform 0.15s,box-shadow 0.2s;
+}
+.form-submit button:hover{
+  background:var(--cta2);transform:translateY(-1px);
+  box-shadow:0 6px 24px rgba(0,212,255,0.3);
+}
+.form-submit button:disabled{opacity:0.5;cursor:not-allowed;transform:none;}
+
+/* ═══════════════════════════════════
+   FOOTER
+═══════════════════════════════════ */
+footer{
+  position:relative;z-index:1;
+  border-top:1px solid var(--rule);
+  padding:48px 24px;width:100%;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:14px;text-align:center;
+  background:var(--surface);
+}
+.footer-logo{
+  font-family:'Bebas Neue',sans-serif;font-size:22px;
+  letter-spacing:0.1em;color:var(--white);
+  display:flex;align-items:center;gap:8px;
+}
+.footer-logo-mark{
+  width:22px;height:22px;border:1px solid var(--accent);
+  display:flex;align-items:center;justify-content:center;
+}
+.footer-logo-mark span{font-family:'Bebas Neue',sans-serif;font-size:12px;color:var(--accent);}
+.footer-tagline{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:0.22em;color:var(--light);text-transform:uppercase;
+}
+.footer-usg{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:0.14em;color:var(--accent);text-transform:uppercase;opacity:0.7;
+}
+.footer-links{
+  display:flex;align-items:center;gap:12px;
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:0.1em;color:var(--muted);text-transform:uppercase;
+}
+.footer-links a{color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--accent);}
+.footer-copy{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:0.1em;color:var(--muted);
+  text-transform:uppercase;opacity:0.4;
+}
+
+/* REVEAL ANIMATIONS */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+#orbital{background:var(--bg);border-top:1px solid var(--rule);}
+.orbital-inner{max-width:1072px;margin:0 auto;padding:100px 24px;display:flex;flex-direction:column;align-items:center;}
+.globe-wrap{
+  width:100%;
+  /* 16:7 aspect ratio — fits the page-wrap box cleanly */
+  aspect-ratio:16/7;
+  position:relative;
+  border:1px solid var(--rule);
+  overflow:hidden;
+  background:#020406;
+  margin-top:48px;
+}
+#ibom-globe-canvas{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+}
+.globe-caption{
+  display:flex;gap:1px;background:var(--rule);border:1px solid var(--rule);
+  border-top:none;width:100%;
+}
+.globe-cap-cell{
+  flex:1;background:var(--card);padding:16px 20px;
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+}
+.globe-cap-num{
+  font-family:'Bebas Neue',sans-serif;font-size:22px;
+  color:var(--accent);line-height:1;
+}
+.globe-cap-num.gold{color:var(--gold);}
+.globe-cap-label{
+  font-family:'DM Mono',monospace;font-size:8px;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--muted);margin-top:5px;line-height:1.5;
+}
+.globe-hint{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--muted);margin-top:16px;opacity:0.5;
+  text-align:center;
+}
+@media(max-width:768px){
+  .orbital-inner{padding:64px 20px;}
+  .globe-wrap{aspect-ratio:4/3;}
+  .globe-caption{flex-wrap:wrap;}
+  .globe-cap-cell{flex:1 1 45%;}
+}
+@media(max-width:480px){
+  .globe-wrap{aspect-ratio:1/1;}
+  .globe-cap-cell{flex:1 1 100%;}
+}
+
+/* ═══════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════ */
+@media(max-width:768px){
+  .nav-inner{padding:16px 20px;}
+  .nav-links,.nav-cta{display:none;}
+  .hamburger{display:flex;}
+  #hero{padding:110px 20px 60px;}
+  .section{padding:80px 20px;}
+  #trl{padding:60px 20px;}
+  .hero-stats{flex-direction:column;gap:1px;}
+  .hero-stat{width:100%;}
+  .problem-grid{grid-template-columns:1fr 1fr;}
+  .cap-grid{grid-template-columns:1fr 1fr;}
+  .platform-split{grid-template-columns:1fr;}
+  .why-grid{grid-template-columns:1fr 1fr;}
+  .join-grid{grid-template-columns:1fr;}
+  .hero-orbit,.hero-orbit-2{display:none;}
+  .problem-statement{padding:32px 28px;}
+}
+@media(max-width:480px){
+  .hero-headline{font-size:clamp(64px,18vw,100px);}
+  .hero-actions{flex-direction:column;width:100%;}
+  .btn-primary,.btn-ghost{width:100%;text-align:center;}
+  .problem-grid{grid-template-columns:1fr;}
+  .cap-grid{grid-template-columns:1fr;}
+  .why-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="grid-lines"></div>
+<div class="page-wrap">
+<div class="accent-bar"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">
+      <div class="nav-logo-mark"><span>I</span></div>
+      IBOM SPACE
+    </a>
+    <ul class="nav-links">
+      <li><a href="#problem">The Problem</a></li>
+      <li><a href="#caelum">Caelum</a></li>
+      <li><a href="#hartwigg">Hartwigg</a></li>
+      <li><a href="#join">Partner</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Request a Briefing</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#problem" onclick="closeMobile()">The Problem</a>
+  <a href="#caelum" onclick="closeMobile()">Caelum</a>
+  <a href="#hartwigg" onclick="closeMobile()">Hartwigg</a>
+  <a href="#join" onclick="closeMobile()">Partner</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <a href="#contact" class="nav-cta" onclick="closeMobile()">Request a Briefing</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-radial"></div>
+  <div class="hero-radial-2"></div>
+  <div class="hero-bg-text">IBOM</div>
+  <div class="hero-orbit"></div>
+  <div class="hero-orbit-2"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Umanah Systems Group &nbsp;·&nbsp; Ibom Space Program</div>
+    <h1 class="hero-headline">
+      <span class="acc">PERSISTENT</span><br>
+      MULTI-<span class="acc2">CAPABLE</span><br>
+      AFFORDABLE
+    </h1>
+    <p class="hero-sub">
+      The only CubeSat-native architecture that unifies multi-band RF communications, optical transport, and long-duration iodine propulsion in a single program.<br>
+      <strong>Built for the missions that matter.</strong>
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Request a Briefing →</a>
+      <a href="#problem" class="btn-ghost">See the Problem</a>
+    </div>
+    <div class="hero-visual-wrap">
+      <div class="hero-visual">
+        <img src="ibom-hero.jpg" alt="Ibom Space — CubeSat platform with Caelum payload and Hartwigg propulsion in LEO"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="img-placeholder" style="display:none;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.75"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>ibom-hero.jpg — CubeSat or smallsat over Earth in LEO, deep space tones, cinematic render</span>
+        </div>
+        <div class="hero-visual-label">Ibom Space Platform — LEO / Lunar / Deep Space</div>
+        <div class="hero-visual-corner tl"></div>
+        <div class="hero-visual-corner tr"></div>
+        <div class="hero-visual-corner bl"></div>
+        <div class="hero-visual-corner br"></div>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">TRL 4</div>
+          <div class="hero-stat-label">Both Divisions — Lab Validated</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">$18B</div>
+          <div class="hero-stat-label">Smallsat Market by 2033</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num gold">5×</div>
+          <div class="hero-stat-label">Thruster Lifetime vs. Conventional HET</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">64×</div>
+          <div class="hero-stat-label">Laser Power Reduction — Static Optical Pointing</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num gold">EP↑</div>
+          <div class="hero-stat-label">Electric Propulsion — Fastest Growing Smallsat Segment</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORBITAL ENVIRONMENT -->
+<section id="orbital">
+  <div class="orbital-inner">
+    <div class="section-label reveal">The Orbital Environment</div>
+    <h2 class="section-title reveal">LEO IS NO LONGER<br>A <span class="acc">PASSIVE</span> ENVIRONMENT</h2>
+    <p class="section-body reveal">About <strong>40,000 objects</strong> are now tracked in orbit. Over <strong>1.2 million debris objects</strong> larger than 1 cm are estimated to exist. Under 47 CFR § 25.283, a satellite reaches end-of-mission the moment it can no longer perform collision-avoidance maneuvers. Propulsion is no longer optional. It is a survivability and compliance requirement.</p>
+
+    <div class="globe-wrap reveal">
+      <div id="ibom-globe-canvas"></div>
+    </div>
+
+    <div class="globe-caption reveal">
+      <div class="globe-cap-cell">
+        <div class="globe-cap-num">40K</div>
+        <div class="globe-cap-label">Tracked Orbital Objects<br>ESA Space Environment Report 2025</div>
+      </div>
+      <div class="globe-cap-cell">
+        <div class="globe-cap-num">1.2M</div>
+        <div class="globe-cap-label">Debris Objects &gt;1 cm<br>ESA Space Environment Report 2025</div>
+      </div>
+      <div class="globe-cap-cell">
+        <div class="globe-cap-num gold">5yr</div>
+        <div class="globe-cap-label">Deorbit Compliance Clock<br>47 CFR § 25.283</div>
+      </div>
+      <div class="globe-cap-cell">
+        <div class="globe-cap-num">3,000+</div>
+        <div class="globe-cap-label">New Tracked Objects Added<br>From 2024 Fragmentation Events</div>
+      </div>
+    </div>
+    <div class="globe-hint">Drag to rotate &nbsp;·&nbsp; Simulated LEO orbits at 0.01× speed</div>
+  </div>
+</section>
+
+<!-- THE PROBLEM -->
+<section id="problem" class="section">
+  <div class="section-inner">
+    <div class="section-label reveal">The Operational Problem</div>
+    <h2 class="section-title reveal">CURRENT SYSTEMS<br>FORCE A <span class="acc">CHOICE</span><br>YOU SHOULD NOT HAVE TO MAKE</h2>
+    <p class="section-body reveal">Smallsat operators today can have a capable payload or a maneuverable platform. They cannot have both at cost. That constraint defines every mission compromise in the proliferated LEO era.</p>
+    <p class="section-body reveal">The communications architecture is fragmented. Government and commercial constellations cannot talk to each other. DARPA spent <strong>$31.9M in FY2023</strong> on the interoperability problem alone. The propulsion architecture is supply-constrained. Xenon is scarce, expensive, and geopolitically exposed. Demand from mega-constellations is projected to outpace global supply within ten years.</p>
+
+    <div class="problem-grid reveal">
+      <div class="problem-card">
+        <div class="problem-num">$10K</div>
+        <div class="problem-unit">Per kg — Xenon Propellant (2023 Market Rate)</div>
+        <p class="problem-desc">Conventional Hall thrusters run on xenon stored at 10–20 MPa. Supply is geopolitically exposed. Russia and Ukraine are primary producers. Demand from mega-constellations will outpace supply within ten years.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">&lt;10K</div>
+        <div class="problem-unit">Hours — Conventional HET Operational Life Before Erosion</div>
+        <p class="problem-desc">Plasma sputtering of ceramic discharge channel walls ends thruster life at roughly 10,000 hours in unshielded designs. That is approximately 14 months of continuous operation. Not enough for long-duration missions.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">0</div>
+        <div class="problem-unit">Commercially Available Unified Multi-Band CubeSat Payloads</div>
+        <p class="problem-desc">A CubeSat needing S-band, X-band, Ka-band, and optical today requires separate subsystems for each function. Each adds mass, power budget, thermal load, and integration risk. The unified architecture does not commercially exist.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">$31.9M</div>
+        <div class="problem-unit">DARPA FY2023 Budget — Space-BACN Program</div>
+        <p class="problem-desc">Government and commercial LEO constellations cannot interoperate. DARPA funded an entire program because satellites on different optical intersatellite link standards cannot exchange mission data. Proliferated space lacks standardization. Many crosslink systems are single-waveform, custom-made, and have little to no reconfigurability.</p>
+      </div>
+    </div>
+
+    <div class="problem-statement reveal">
+      <p>Imagery collected on one satellite system will not be immediately available to responders using a different one. That is not a technology problem. It is an architecture problem.</p>
+      <cite>— DARPA Space-BACN Program Statement, 2021. $31.9M in FY2023. $32.1M requested FY2024.</cite>
+    </div>
+  </div>
+</section>
+
+<!-- CAELUM -->
+<section id="caelum" class="section">
+  <div class="section-inner">
+    <div class="division-header reveal">
+      <div class="division-tag">Division 01</div>
+      <div class="division-name"><span class="acc">CAELUM</span></div>
+      <div class="division-tagline">Satellite Communications &amp; Sensing. Unified. CubeSat-Native. Multi-Domain.</div>
+    </div>
+
+    <p class="section-body reveal">Current satellite communications payloads are designed for a single mission: one band, one function, one antenna. Caelum breaks that constraint. A unified payload combining wideband RF synthesis, optical transport, static laser pointing, and deployable antenna technology in a single CubeSat-native architecture.</p>
+    <p class="section-body reveal">The result is a smallsat that communicates across multiple frequency bands simultaneously, downlinks high-volume data optically without moving parts, and operates across LEO, lunar, and deep space mission profiles.</p>
+
+    <div class="division-visual reveal">
+      <img src="ibom-caelum.jpg" alt="Caelum unified communications and sensing payload"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="img-placeholder" style="display:none;">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.75"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>ibom-caelum.jpg — Satellite payload render, multi-band antenna array, optical comm terminal, deep blue tones</span>
+      </div>
+      <div class="division-visual-label">Caelum Payload Architecture — Multi-Band RF + Optical</div>
+    </div>
+
+    <div class="cap-grid reveal">
+      <div class="cap-card">
+        <div class="cap-icon">RF</div>
+        <div class="cap-title">Wideband RF Synthesis</div>
+        <p class="cap-desc">Multi-tone, multi-band high-frequency synthesis across Q-band (37–42 GHz), V/W-band (71–76 GHz), and K-band (18–26 GHz) in a single unit. No separate oscillator chains.</p>
+        <div class="cap-spec">Q / K / V / W Band · Single Unit</div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">OPT</div>
+        <div class="cap-title">Optical Transport</div>
+        <p class="cap-desc">A single laser beam encodes and transmits multiple RF bands simultaneously using wavelength division multiplexing. Dramatically fewer transceivers. Higher data throughput per unit mass.</p>
+        <div class="cap-spec">WDM · Tunable Diode Laser · Multi-Protocol</div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">PAT</div>
+        <div class="cap-title">Static Laser Pointing</div>
+        <p class="cap-desc">VCSEL/Photodetector array replaces fast-steering mirrors and gimbals. No moving parts. No vibration isolation platform required. Nanosecond pointing response. 64× laser power reduction vs. body-pointing.</p>
+        <div class="cap-spec">VCSEL Array · No Moving Parts · ns Response</div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">ANT</div>
+        <div class="cap-title">Deployable Antenna</div>
+        <p class="cap-desc">Lightweight self-deployable helical antenna. Under 2 grams. Under 1.2 cm³ stowed. 10 dBi gain or higher. Integrates into existing deployable structures including thin-film solar arrays. One-tenth the mass of traditional arrays.</p>
+        <div class="cap-spec">≤2g · ≤1.2 cm³ · ≥10 dBi · S / X / Ka Band</div>
+      </div>
+    </div>
+
+    <div style="margin-top:40px;text-align:center;" class="reveal">
+      <a href="caelum.html" class="btn-ghost">Caelum Technical Brief →</a>
+    </div>
+  </div>
+</section>
+
+<!-- HARTWIGG -->
+<section id="hartwigg" class="section">
+  <div class="section-inner">
+    <div class="division-header reveal">
+      <div class="division-tag hartwigg-tag">Division 02</div>
+      <div class="division-name"><span class="gold">HARTWIGG</span></div>
+      <div class="division-tagline">Long-Duration Iodine Hall Effect Propulsion for CubeSats and Smallsats.</div>
+    </div>
+
+    <p class="section-body reveal">Xenon propulsion has defined smallsat maneuverability for two decades. The constraints are well known: high storage pressure, limited propellant density, supply chain fragility, and a thruster erosion clock that ends missions prematurely. Hartwigg Propulsion addresses all four.</p>
+    <p class="section-body reveal">Iodine stores as a solid. It delivers comparable thrust performance to xenon at dramatically lower cost and storage pressure. Paired with a magnetically shielded Hall thruster architecture that reduces discharge channel erosion by a significant factor, the result is a propulsion system that keeps a smallsat on station longer than any xenon-based alternative in its power class.</p>
+
+    <div class="division-visual reveal">
+      <img src="ibom-hartwigg.jpg" alt="Hartwigg iodine Hall effect propulsion system"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="img-placeholder" style="display:none;">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.75"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>ibom-hartwigg.jpg — Hall effect thruster firing, iodine plasma plume, amber/gold tones against dark space background</span>
+      </div>
+      <div class="division-visual-label">Hartwigg Propulsion — Iodine Hall Effect Architecture</div>
+    </div>
+
+    <div class="cap-grid reveal">
+      <div class="cap-card hartwigg-card">
+        <div class="cap-icon">I₂</div>
+        <div class="cap-title">Iodine Propellant</div>
+        <p class="cap-desc">Stores as a dense solid at very low pressure. No high-pressure xenon vessel required. Higher propellant mass per unit volume. Dramatically lower cost per kilogram. Supply chain independent of noble gas markets.</p>
+        <div class="cap-spec">Solid Storage · Low Pressure · High Density</div>
+      </div>
+      <div class="cap-card hartwigg-card">
+        <div class="cap-icon">HET</div>
+        <div class="cap-title">Hall Effect Thruster</div>
+        <p class="cap-desc">Sub-kilowatt power class. Greater than 120 kg propellant throughput. Nominal efficiency greater than 50%. Propellant throughput 2–5× that of existing flight heritage thrusters in the same power class.</p>
+        <div class="cap-spec">&gt;120 kg Throughput · &gt;50% Efficiency · &lt;1 kW</div>
+      </div>
+      <div class="cap-card hartwigg-card">
+        <div class="cap-icon">OMS</div>
+        <div class="cap-title">Magnetic Shielding</div>
+        <p class="cap-desc">Optimized magnetically shielded field topology dramatically reduces discharge channel erosion and front pole cover erosion vs. conventional designs. Extends operational lifetime to 50,000+ hours — a 5× improvement over unshielded thrusters.</p>
+        <div class="cap-spec">50,000+ hrs · 5× Life Extension · OMS Topology</div>
+      </div>
+      <div class="cap-card hartwigg-card">
+        <div class="cap-icon">PPU</div>
+        <div class="cap-title">Power Processing Unit</div>
+        <p class="cap-desc">Scalable PPU designed for 28V unregulated small spacecraft power systems. Each discharge module processes up to 500W. Phase-staggered design reduces electrical ripple and component count. Fault protection included.</p>
+        <div class="cap-spec">24–34V Input · 500W Module · 28V Compatible</div>
+      </div>
+    </div>
+
+    <div style="margin-top:40px;text-align:center;" class="reveal">
+      <a href="hartwigg.html" class="btn-ghost" style="color:var(--gold);border-color:rgba(245,200,66,0.3);">Hartwigg Technical Brief →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORM STORY -->
+<section id="platform" class="section">
+  <div class="section-inner">
+    <div class="section-label reveal">The Architecture</div>
+    <h2 class="section-title reveal">ONE PROGRAM<br>TWO DIVISIONS<br><span class="acc">ONE ANSWER</span></h2>
+    <p class="section-body reveal">Caelum and Hartwigg are not independent products. They are two divisions of a single architecture designed to answer a question the smallsat market has not answered.</p>
+
+    <div class="platform-split reveal">
+      <div class="platform-half caelum-half">
+        <div class="platform-label c">Division 01</div>
+        <h3>CAELUM</h3>
+        <p>Multi-band RF synthesis, optical transport, static laser pointing, and deployable antenna technology. Unified. CubeSat-native. No separate subsystems. No moving optical parts. Full-spectrum communications and sensing from a single payload.</p>
+        <a href="caelum.html" class="platform-link c">Explore Caelum →</a>
+      </div>
+      <div class="platform-half hartwigg-half">
+        <div class="platform-label h">Division 02</div>
+        <h3>HARTWIGG</h3>
+        <p>Iodine-based Hall effect propulsion with a magnetically shielded thruster delivering 5× the operational life of conventional designs at a fraction of the propellant cost. Designed for the smallsat operators who cannot afford to stop.</p>
+        <a href="hartwigg.html" class="platform-link h">Explore Hartwigg →</a>
+      </div>
+    </div>
+    <div class="platform-together reveal">
+      <p>A smallsat that communicates across multiple bands, senses across multiple domains, and <em>maneuvers responsively</em> is a fundamentally different mission asset than anything commercially available today. That is what Ibom Space is building.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY NOW -->
+<section id="why" class="section">
+  <div class="section-inner">
+    <div class="section-label reveal">Market Context</div>
+    <h2 class="section-title reveal">THE WINDOW IS <span class="acc">OPEN.</span><br>IT WILL NOT STAY OPEN.</h2>
+    <p class="section-body reveal">The proliferated LEO era is not a future scenario. It is the present. The architecture decisions being made now will determine which platforms become the standard for government and commercial small satellite programs over the next decade.</p>
+
+    <div class="why-grid reveal">
+      <div class="why-card">
+        <div class="why-num">$18B</div>
+        <div class="why-unit">Global Smallsat Market by 2033 (11.5% CAGR)</div>
+        <p class="why-desc">The global small satellite market was valued at $6.79 billion in 2024 and is projected to reach $18.09 billion by 2033. Communications dominates at approximately 95% of market share.</p>
+        <div class="why-source">SkyQuest, 2024</div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">51%</div>
+        <div class="why-unit">North America Smallsat Market Growth 2024–2029</div>
+        <p class="why-desc">The North American market is the largest globally, driven by defense investment, commercial constellation build-out, and government science programs. Military and government segment growing at ~11% CAGR.</p>
+        <div class="why-source">Mordor Intelligence</div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">10yr</div>
+        <div class="why-unit">Until Xenon Demand Outpaces Global Supply</div>
+        <p class="why-desc">Mega-constellation build-out will exhaust xenon supply within ten years. The operators who transition to iodine propulsion now will not face the supply disruption and price volatility that xenon-dependent programs will.</p>
+        <div class="why-source">Nature, 2021</div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">#1</div>
+        <div class="why-unit">Electric Propulsion — Fastest Growing Smallsat Propulsion Segment</div>
+        <p class="why-desc">Electric propulsion is the fastest-growing propulsion segment in the smallsat market. As mission lifetimes extend and constellation operators demand greater delta-v budgets, propulsion becomes a primary differentiator — not an afterthought.</p>
+        <div class="why-source">MarketsandMarkets</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOIN US -->
+<section id="join" class="section">
+  <div class="section-inner">
+    <div class="section-label reveal">Partner with Us</div>
+    <h2 class="section-title reveal">IBOM SPACE IS<br>BUILDING ITS <span class="acc">TEAM</span></h2>
+    <p class="section-body reveal">We are in early program development. The program architecture is defined. The technology is validated at TRL 4. The market window is open. We are looking for the right people and partners to close the gap between laboratory and orbit.</p>
+
+    <div class="join-grid reveal">
+      <div class="join-card">
+        <div class="join-icon">PLT</div>
+        <div class="join-title">Pilot Partner</div>
+        <p class="join-body">We are looking for mission teams, constellation operators, or program offices ready to co-develop and fly the first demonstration of the Ibom Space architecture. A pilot partner gets early access to both divisions, shapes the performance requirements, and earns a permanent position in the development roadmap. This is how the gap between TRL 4 and orbit closes.</p>
+        <a href="#contact" class="join-cta">Explore Pilot Partnership →</a>
+      </div>
+      <div class="join-card">
+        <div class="join-icon">MFG</div>
+        <div class="join-title">Manufacturing Partner</div>
+        <p class="join-body">Ibom Space executes manufacturing through strategic partners. We are looking for manufacturing partners with smallsat payload, electric propulsion, or precision aerospace fabrication capability who understand what TRL 4 means and what it takes to go further.</p>
+        <a href="#contact" class="join-cta">Discuss Partnership →</a>
+      </div>
+      <div class="join-card">
+        <div class="join-icon">GOV</div>
+        <div class="join-title">Government Partner</div>
+        <p class="join-body">We are seeking government development partners through DARPA, AFRL, Space Force, SOCOM, and adjacent programs. If you are a program manager or technical lead evaluating emerging propulsion or communications architecture for a future mission, this conversation is worth thirty minutes.</p>
+        <a href="#contact" class="join-cta">Request a Briefing →</a>
+      </div>
+      <div class="join-card">
+        <div class="join-icon">INV</div>
+        <div class="join-title">Investor</div>
+        <p class="join-body">Ibom Space is a deep tech program in early development. TRL 4. Verified technology foundation. Identified market gap. Active co-founder search. If you are a deep tech investor who understands the difference between a concept and a validated architecture, we want to talk.</p>
+        <a href="#contact" class="join-cta">Explore Investment →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRL STATUS -->
+<section id="trl">
+  <div class="trl-inner">
+    <div class="section-label reveal">Development Status</div>
+    <h2 class="section-title reveal" style="font-size:clamp(32px,4vw,56px);">WHERE WE ARE</h2>
+    <div class="trl-track reveal">
+      <div class="trl-step done">
+        <div class="trl-dot"></div>
+        <div class="trl-line"></div>
+        <div class="trl-num">1</div>
+        <div class="trl-label">Concept</div>
+      </div>
+      <div class="trl-step done">
+        <div class="trl-dot"></div>
+        <div class="trl-line"></div>
+        <div class="trl-num">2</div>
+        <div class="trl-label">Formulated</div>
+      </div>
+      <div class="trl-step done">
+        <div class="trl-dot"></div>
+        <div class="trl-line"></div>
+        <div class="trl-num">3</div>
+        <div class="trl-label">Proof of Concept</div>
+      </div>
+      <div class="trl-step active">
+        <div class="trl-dot"></div>
+        <div class="trl-line"></div>
+        <div class="trl-num">4</div>
+        <div class="trl-label">Lab Validated ◀ Now</div>
+      </div>
+      <div class="trl-step">
+        <div class="trl-dot"></div>
+        <div class="trl-line"></div>
+        <div class="trl-num">5</div>
+        <div class="trl-label">Relevant Env.</div>
+      </div>
+      <div class="trl-step">
+        <div class="trl-dot"></div>
+        <div class="trl-line"></div>
+        <div class="trl-num">6</div>
+        <div class="trl-label">Demo</div>
+      </div>
+      <div class="trl-step">
+        <div class="trl-dot"></div>
+        <div class="trl-line"></div>
+        <div class="trl-num">7</div>
+        <div class="trl-label">Prototype</div>
+      </div>
+      <div class="trl-step">
+        <div class="trl-dot"></div>
+        <div class="trl-line"></div>
+        <div class="trl-num">8</div>
+        <div class="trl-label">Qualified</div>
+      </div>
+      <div class="trl-step">
+        <div class="trl-dot"></div>
+        <div class="trl-num">9</div>
+        <div class="trl-label">Flight Proven</div>
+      </div>
+    </div>
+    <p class="trl-note reveal">Both Caelum and Hartwigg are at <strong>TRL 4</strong>. Component and breadboard validation in laboratory environment. Proof of concept demonstrated. The technology foundation is real. The development path is clear. The partners to execute it are what we are building now.</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="section-inner">
+    <div class="section-label reveal">Contact</div>
+    <h2 class="section-title reveal">THE CONVERSATION<br>STARTS <span class="acc">HERE</span></h2>
+    <p class="section-body reveal">Whether you are a potential co-founder, manufacturing partner, government program office, or investor — the right next step is a conversation. Tell us who you are and what you are building. We will take it from there.</p>
+
+    <form class="contact-form reveal" id="contactForm" action="https://formspree.io/f/xeelnkqj" method="POST">
+      <div class="form-field">
+        <label class="form-label">Full Name</label>
+        <input type="text" name="name" placeholder="Your name" autocomplete="name" required>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Email Address</label>
+        <input type="email" name="email" placeholder="your@email.com" autocomplete="email" required>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Organization</label>
+        <input type="text" name="organization" placeholder="Agency, fund, company, or institution" autocomplete="organization">
+      </div>
+      <div class="form-field">
+        <label class="form-label">I Am A</label>
+        <select name="inquiry_type" required>
+          <option value="" disabled selected>Select one</option>
+          <option>Pilot Partner</option>
+          <option>Manufacturing Partner</option>
+          <option>Government Program Office</option>
+          <option>Investor</option>
+          <option>General Inquiry</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Message</label>
+        <textarea name="message" rows="5" placeholder="Tell us about your interest and what you are working on." required></textarea>
+      </div>
+      <div class="form-submit">
+        <button type="submit" id="submitBtn">Send Message →</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="accent-bar"></div>
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-mark"><span>I</span></div>
+    IBOM SPACE
+  </div>
+  <div class="footer-tagline">PERSISTENT &nbsp; MULTI-CAPABLE &nbsp; AFFORDABLE</div>
+  <div class="footer-usg">A Umanah Systems Group Program</div>
+  <div class="footer-links">
+    <a href="caelum.html">Caelum</a>
+    <span>·</span>
+    <a href="hartwigg.html">Hartwigg</a>
+    <span>·</span>
+    <a href="privacy.html">Privacy Policy</a>
+    <span>·</span>
+    <a href="terms.html">Terms of Use</a>
+  </div>
+  <div class="footer-copy">© Ibom Space. A Umanah Systems Group Program. All rights reserved.</div>
+</footer>
+
+<script>
+/* MOBILE MENU */
+const hamburger=document.getElementById('hamburger');
+const mobileMenu=document.getElementById('mobileMenu');
+hamburger.addEventListener('click',()=>{mobileMenu.classList.toggle('open');});
+function closeMobile(){mobileMenu.classList.remove('open');}
+
+/* SCROLL REVEAL */
+const revealObs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      setTimeout(()=>{e.target.classList.add('visible');},Number(e.target.dataset.delay)||0);
+      revealObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach((el,i)=>{
+  el.dataset.delay=(i%5)*80;
+  revealObs.observe(el);
+});
+
+/* CARD STAGGER */
+const cardObs=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const cards=entry.target.querySelectorAll('.problem-card,.cap-card,.why-card,.join-card,.trl-step');
+      cards.forEach((card,i)=>{
+        card.style.opacity='0';
+        card.style.transform='translateY(20px)';
+        card.style.transition=`opacity 0.55s ease ${i*90}ms,transform 0.55s ease ${i*90}ms`;
+        requestAnimationFrame(()=>{
+          setTimeout(()=>{card.style.opacity='1';card.style.transform='translateY(0)';},60);
+        });
+      });
+      cardObs.unobserve(entry.target);
+    }
+  });
+},{threshold:0.05});
+document.querySelectorAll('.problem-grid,.cap-grid,.why-grid,.join-grid,.trl-track').forEach(el=>{cardObs.observe(el);});
+
+/* COUNTER ANIMATION */
+function animateCounter(el,target,suffix){
+  const isFloat=target.toString().includes('.');
+  const duration=1800;const start=performance.now();
+  const startVal=0;
+  function update(now){
+    const elapsed=now-start;
+    const progress=Math.min(elapsed/duration,1);
+    const ease=1-Math.pow(1-progress,3);
+    const current=startVal+(target-startVal)*ease;
+    el.textContent=(isFloat?current.toFixed(1):Math.round(current))+suffix;
+    if(progress<1)requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+const counterObs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const el=e.target;
+      const raw=el.dataset.count;
+      const suffix=el.dataset.suffix||'';
+      if(raw)animateCounter(el,parseFloat(raw),suffix);
+      counterObs.unobserve(el);
+    }
+  });
+},{threshold:0.5});
+document.querySelectorAll('[data-count]').forEach(el=>counterObs.observe(el));
+
+/* GLOBE INIT */
+(function() {
+  function tryInitGlobe() {
+    if (typeof THREE === 'undefined' || typeof IbomGlobe === 'undefined') {
+      setTimeout(tryInitGlobe, 100); return;
+    }
+    /* Only init when canvas is visible in viewport for performance */
+    const el = document.getElementById('ibom-globe-canvas');
+    if (!el) return;
+    const obs = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        IbomGlobe.init('ibom-globe-canvas');
+        obs.disconnect();
+      }
+    }, { threshold: 0.1 });
+    obs.observe(el);
+  }
+  tryInitGlobe();
+})();
+window.addEventListener('scroll',()=>{
+  const nav=document.querySelector('nav');
+  const inner=document.querySelector('.nav-inner');
+  if(window.scrollY>60){
+    nav.style.background='rgba(9,12,16,0.97)';
+    if(inner)inner.style.padding='12px 48px';
+  }else{
+    nav.style.background='rgba(9,12,16,0.92)';
+    if(inner)inner.style.padding='20px 48px';
+  }
+});
+
+/* FORMSPREE */
+const contactForm=document.getElementById('contactForm');
+const submitBtn=document.getElementById('submitBtn');
+if(contactForm){
+  contactForm.addEventListener('submit',async function(e){
+    e.preventDefault();
+    submitBtn.disabled=true;
+    submitBtn.textContent='Sending...';
+    try{
+      const res=await fetch('https://formspree.io/f/xeelnkqj',{
+        method:'POST',
+        body:new FormData(contactForm),
+        headers:{'Accept':'application/json'}
+      });
+      if(res.ok){window.location.href='/thanks.html';}
+      else{
+        submitBtn.disabled=false;
+        submitBtn.textContent='Send Message →';
+        alert('Something went wrong. Please try again.');
+      }
+    }catch(err){
+      submitBtn.disabled=false;
+      submitBtn.textContent='Send Message →';
+      alert('Network error. Please check your connection and try again.');
+    }
+  });
+}
+</script>
+<script src="ibom-globe.js"></script>
+
+</div><!-- end page-wrap -->
+</body>
+</html>

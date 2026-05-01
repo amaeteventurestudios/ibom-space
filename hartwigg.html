@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hartwigg Propulsion — Ibom Space | Long-Duration Iodine Hall Effect Propulsion</title>
+<meta name="description" content="Hartwigg is the Ibom Space electric propulsion division. Long-duration iodine-based Hall effect propulsion for smallsat and CubeSat operators seeking longer mission life and lower propellant cost than xenon-based alternatives.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Hartwigg Propulsion — Long-Duration Iodine Hall Effect Propulsion">
+<meta property="og:description" content="Iodine Hall effect propulsion with 5× thruster life extension, >120 kg throughput, >50% efficiency. Supply chain independence from xenon.">
+<meta property="og:image" content="https://ibomspace.com/og-image.png">
+<meta property="og:url" content="https://ibomspace.com/hartwigg.html">
+<link rel="canonical" href="https://ibomspace.com/hartwigg.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23090C10'/><text y='.9em' font-size='80' fill='%2300D4FF'>I</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#090C10;--surface:#0E1218;--card:#131820;--card2:#181E28;--rule:rgba(255,255,255,0.07);--muted:rgba(255,255,255,0.3);--body:rgba(255,255,255,0.6);--light:rgba(255,255,255,0.88);--white:#F0F4F8;--accent:#00D4FF;--gold:#F5C842;--gold2:#C8A02A;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{background:var(--bg);color:var(--light);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;}
+.grid-lines{position:fixed;inset:0;background-image:linear-gradient(rgba(245,200,66,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(245,200,66,0.015) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;z-index:0;}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(9,12,16,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--rule);display:flex;justify-content:center;}
+.nav-inner{width:100%;max-width:1120px;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;transition:padding 0.3s ease;}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.12em;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:8px;}
+.nav-logo-mark{width:22px;height:22px;border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;}
+.nav-logo-mark span{font-family:'Bebas Neue',sans-serif;font-size:12px;color:var(--accent);}
+.nav-logo:hover{color:var(--accent);}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--gold);transition:width 0.3s ease;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+.nav-cta{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--bg);background:var(--gold);padding:10px 22px;text-decoration:none;font-weight:500;transition:background 0.2s,transform 0.15s;}
+.nav-cta:hover{background:var(--gold2);transform:translateY(-1px);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:24px;height:1px;background:var(--light);transition:all 0.3s;}
+.mobile-menu{display:none;position:fixed;top:60px;left:0;right:0;background:rgba(9,12,16,0.98);border-bottom:1px solid var(--rule);padding:28px 24px;z-index:499;flex-direction:column;align-items:center;gap:24px;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.mobile-menu a:hover{color:var(--gold);}
+.mobile-menu .nav-cta{margin-top:8px;color:var(--bg);}
+.accent-bar{height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+main{max-width:1120px;margin:0 auto;padding:0;border-left:1px solid var(--rule);border-right:1px solid var(--rule);}
+.div-hero{padding:160px 48px 100px;position:relative;border-bottom:1px solid var(--rule);overflow:hidden;display:flex;flex-direction:column;align-items:center;text-align:center;}
+.div-hero::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:900px;height:600px;background:radial-gradient(ellipse,rgba(245,200,66,0.04) 0%,transparent 65%);pointer-events:none;}
+.div-hero-bg{position:absolute;bottom:-60px;left:50%;transform:translateX(-50%);font-family:'Bebas Neue',sans-serif;font-size:clamp(80px,15vw,220px);color:rgba(245,200,66,0.012);letter-spacing:0.04em;line-height:1;pointer-events:none;user-select:none;white-space:nowrap;}
+.div-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;justify-content:center;gap:14px;}
+.div-eyebrow::before,.div-eyebrow::after{content:'';display:block;width:36px;height:1px;background:var(--gold);opacity:0.5;}
+.div-hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,9vw,120px);line-height:0.85;letter-spacing:0.02em;margin-bottom:28px;color:var(--white);text-align:center;}
+.div-hero h1 .gold{color:var(--gold);}
+.div-hero-sub{font-size:17px;color:var(--body);max-width:600px;line-height:1.85;margin-bottom:44px;text-align:center;}
+.div-hero-sub strong{color:var(--light);font-weight:500;}
+.div-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.div-section{padding:96px 48px;border-bottom:1px solid var(--rule);display:flex;flex-direction:column;align-items:center;text-align:center;}
+.div-section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:12px;}
+.div-section-label::before,.div-section-label::after{content:'';display:block;width:32px;height:1px;background:var(--gold);opacity:0.5;}
+.div-section h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,4.5vw,68px);letter-spacing:0.02em;line-height:0.9;margin-bottom:24px;color:var(--white);text-align:center;}
+.div-section h2 .gold{color:var(--gold);}
+.div-section p{font-size:15px;color:var(--body);line-height:1.85;margin-bottom:16px;max-width:700px;text-align:center;}
+.div-section p strong{color:var(--light);font-weight:500;}
+.heilmeier-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:48px;width:100%;}
+.h-card{background:var(--card);padding:40px 36px;position:relative;overflow:hidden;transition:background 0.25s;display:flex;flex-direction:column;align-items:center;text-align:center;}
+.h-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:scaleX(0);transition:transform 0.4s ease;}
+.h-card:hover{background:var(--card2);}
+.h-card:hover::before{transform:scaleX(1);}
+.h-card-num{font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--gold);opacity:0.15;line-height:1;margin-bottom:8px;}
+.h-card-q{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;line-height:1.6;}
+.h-card h3{font-size:15px;font-weight:600;color:var(--light);margin-bottom:12px;letter-spacing:0.02em;}
+.h-card p{font-size:13px;color:var(--body);line-height:1.8;}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:48px;width:100%;}
+.compare-col{background:var(--card);padding:40px 32px;display:flex;flex-direction:column;align-items:center;text-align:center;}
+.compare-col.iodine{background:rgba(245,200,66,0.04);}
+.compare-col h4{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:0.06em;margin-bottom:24px;}
+.compare-col h4.xenon-h{color:var(--muted);}
+.compare-col h4.iodine-h{color:var(--gold);}
+.compare-row{display:flex;flex-direction:column;align-items:center;padding:12px 0;border-bottom:1px solid var(--rule);gap:6px;width:100%;}
+.compare-row:last-child{border-bottom:none;}
+.compare-key{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);}
+.compare-val{font-size:13px;color:var(--body);}
+.compare-col.iodine .compare-val{color:var(--light);}
+.spec-table{width:100%;margin-top:48px;border:1px solid var(--rule);border-collapse:collapse;}
+.spec-table tr{border-bottom:1px solid var(--rule);}
+.spec-table tr:last-child{border-bottom:none;}
+.spec-table td{padding:18px 24px;font-size:13px;text-align:center;}
+.spec-table td:first-child{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);width:34%;background:var(--card);}
+.spec-table td:last-child{color:var(--body);background:var(--surface);}
+.spec-table td strong{color:var(--light);font-weight:500;}
+.div-img{width:100%;aspect-ratio:16/7;background:var(--card);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;margin:40px 0;}
+.div-img img{width:100%;height:100%;object-fit:cover;}
+.div-img-ph{display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--muted);}
+.div-img-ph svg{opacity:0.25;}
+.div-img-ph span{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;text-align:center;max-width:320px;line-height:1.6;}
+.btn-primary{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--bg);background:var(--gold);padding:16px 40px;text-decoration:none;font-weight:500;transition:background 0.2s,transform 0.15s,box-shadow 0.2s;display:inline-block;}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 32px rgba(245,200,66,0.25);}
+.btn-ghost{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(245,200,66,0.3);padding:16px 40px;text-decoration:none;transition:all 0.2s;display:inline-block;}
+.btn-ghost:hover{background:rgba(245,200,66,0.08);border-color:var(--gold);transform:translateY(-2px);}
+.section-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:48px;}
+footer{border-top:1px solid var(--rule);padding:40px 48px;background:var(--surface);display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.1em;color:var(--white);display:flex;align-items:center;gap:6px;}
+.footer-logo-mark{width:20px;height:20px;border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;}
+.footer-logo-mark span{font-family:'Bebas Neue',sans-serif;font-size:11px;color:var(--accent);}
+.footer-usg{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;color:var(--accent);text-transform:uppercase;opacity:0.7;}
+.footer-links{display:flex;align-items:center;gap:12px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--muted);text-transform:uppercase;}
+.footer-links a{color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--accent);}
+.footer-copy{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--light);text-transform:uppercase;opacity:0.5;}
+@media(max-width:768px){.nav-inner{padding:16px 20px;}.nav-links,.nav-cta{display:none;}.hamburger{display:flex;}.div-hero{padding:120px 20px 72px;}.div-section{padding:64px 20px;}.heilmeier-grid{grid-template-columns:1fr;}.compare-grid{grid-template-columns:1fr;}footer{padding:32px 20px;}}
+@media(max-width:480px){.div-actions,.section-actions{flex-direction:column;width:100%;}.btn-primary,.btn-ghost{width:100%;text-align:center;}}
+</style>
+</head>
+<body>
+<div class="grid-lines"></div>
+<div class="accent-bar"></div>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><div class="nav-logo-mark"><span>I</span></div>IBOM SPACE</a>
+    <ul class="nav-links">
+      <li><a href="index.html#problem">The Problem</a></li>
+      <li><a href="caelum.html">Caelum</a></li>
+      <li><a href="hartwigg.html" class="active">Hartwigg</a></li>
+      <li><a href="index.html#join">Partner</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <a href="index.html#contact" class="nav-cta">Request a Briefing</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#problem" onclick="closeMobile()">The Problem</a>
+  <a href="caelum.html" onclick="closeMobile()">Caelum</a>
+  <a href="hartwigg.html" onclick="closeMobile()">Hartwigg</a>
+  <a href="index.html#join" onclick="closeMobile()">Partner</a>
+  <a href="index.html#contact" onclick="closeMobile()">Contact</a>
+  <a href="index.html#contact" class="nav-cta" onclick="closeMobile()">Request a Briefing</a>
+</div>
+<main>
+
+<div class="div-hero">
+  <div class="div-hero-bg">HARTWIGG PROPULSION</div>
+  <div class="div-eyebrow">Ibom Space &nbsp;·&nbsp; Division 02</div>
+  <h1><span class="gold">HARTWIGG</span><br>PROPULSION</h1>
+  <p class="div-hero-sub">Long-duration iodine-based Hall effect propulsion for CubeSats and smallsats.<br><strong>More mission life. Lower propellant cost. Supply chain independence from xenon.</strong></p>
+  <div class="div-actions">
+    <a href="index.html#contact" class="btn-primary">Request a Technical Briefing →</a>
+    <a href="caelum.html" class="btn-ghost">See Caelum Communications</a>
+  </div>
+</div>
+
+<div class="div-section">
+  <div class="div-section-label">The Problem</div>
+  <h2>XENON IS A <span class="gold">STRATEGIC LIABILITY</span><br>FOR SMALLSAT OPERATORS</h2>
+  <p>Xenon has defined smallsat electric propulsion for two decades. The constraints are well understood. It is expensive — between <strong>$3,000 and $10,000 per kilogram</strong> depending on market conditions. It must be stored at 10–20 megapascals of pressure, requiring specialized vessels, loading equipment, and trained personnel.</p>
+  <p>Russia and Ukraine are the primary producers. Supply chain disruptions have already caused price spikes. Demand from mega-constellations — Starlink alone plans up to 42,000 satellites — is projected to outpace global xenon supply within ten years.</p>
+  <p>The thruster erosion problem compounds the economics. Conventional unshielded Hall thrusters erode at approximately 1 mm per 100 hours, limiting mission life to roughly 10,000 hours — approximately 14 months of continuous operation. For long-duration missions, that is not enough.</p>
+  <div class="div-img">
+    <img src="ibom-hartwigg-problem.jpg" alt="Xenon vs iodine propellant comparison" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+    <div class="div-img-ph"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.75"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>ibom-hartwigg-problem.jpg — Hall thruster render or xenon vs iodine comparison, amber/gold tones</span></div>
+  </div>
+</div>
+
+<div class="div-section">
+  <div class="div-section-label">The Case for Iodine</div>
+  <h2>XENON VS<br><span class="gold">IODINE</span></h2>
+  <p>Iodine delivers comparable thrust performance to xenon at all power levels in Hall thruster operation. The system-level advantages are structural, not marginal.</p>
+  <div class="compare-grid">
+    <div class="compare-col xenon">
+      <h4 class="xenon-h">XENON</h4>
+      <div class="compare-row"><span class="compare-key">Cost per kg</span><span class="compare-val">$3,000–$10,000 (volatile)</span></div>
+      <div class="compare-row"><span class="compare-key">Storage state</span><span class="compare-val">Compressed gas</span></div>
+      <div class="compare-row"><span class="compare-key">Storage pressure</span><span class="compare-val">10–20 MPa</span></div>
+      <div class="compare-row"><span class="compare-key">Tankage</span><span class="compare-val">High-pressure vessel required</span></div>
+      <div class="compare-row"><span class="compare-key">Supply chain</span><span class="compare-val">Geopolitically exposed. Russia/Ukraine primary producers.</span></div>
+      <div class="compare-row"><span class="compare-key">Supply outlook</span><span class="compare-val">Projected shortage within 10 years</span></div>
+    </div>
+    <div class="compare-col iodine">
+      <h4 class="iodine-h">IODINE</h4>
+      <div class="compare-row"><span class="compare-key">Cost per kg</span><span class="compare-val"><strong>Dramatically lower. Stable supply.</strong></span></div>
+      <div class="compare-row"><span class="compare-key">Storage state</span><span class="compare-val"><strong>Solid. Sublimates to vapor for use.</strong></span></div>
+      <div class="compare-row"><span class="compare-key">Storage pressure</span><span class="compare-val"><strong>Very low. No pressure vessel required.</strong></span></div>
+      <div class="compare-row"><span class="compare-key">Tankage</span><span class="compare-val"><strong>Simple spring-loaded tank.</strong></span></div>
+      <div class="compare-row"><span class="compare-key">Supply chain</span><span class="compare-val"><strong>Diversified. Not geopolitically concentrated.</strong></span></div>
+      <div class="compare-row"><span class="compare-key">Thrust performance</span><span class="compare-val"><strong>Comparable to xenon at all power levels.</strong></span></div>
+    </div>
+  </div>
+</div>
+
+<div class="div-section">
+  <div class="div-section-label">The Hartwigg Approach</div>
+  <h2>WHAT IS <span class="gold">NEW</span><br>WHY IT <span class="gold">WORKS</span></h2>
+  <div class="heilmeier-grid">
+    <div class="h-card">
+      <div class="h-card-num">01</div>
+      <div class="h-card-q">What is the novel approach?</div>
+      <h3>Iodine Propellant Feed System</h3>
+      <p>A spring-loaded mechanism holds solid iodine in optimal thermal contact with the heated tank walls in zero gravity, maintaining a consistent sublimation rate at levels useful for propulsive operation. Feed system uses materials selected for resistance to iodine's corrosive properties. Designed for 200W-class Hall thruster integration. Dynamic modeling demonstrates the tubing architecture reduces vibrationally-induced stresses during launch.</p>
+    </div>
+    <div class="h-card">
+      <div class="h-card-num">02</div>
+      <div class="h-card-q">What is the performance envelope?</div>
+      <h3>High Propellant Throughput Hall Thruster</h3>
+      <p>Greater than 120 kg propellant throughput capability. Nominal thruster efficiency greater than 50%. Propellant throughput 2–5× that of existing flight heritage thrusters within the sub-kilowatt power class. Combines heritage Hall thruster design with advanced magnetic circuit design, robust propellant manifolds, and center-mounted cathodes. Prototype fabricated. Proof-of-concept demonstrated in vacuum facility testing.</p>
+    </div>
+    <div class="h-card">
+      <div class="h-card-num">03</div>
+      <div class="h-card-q">What is the lifetime advantage?</div>
+      <h3>Optimized Magnetic Shielding</h3>
+      <p>The Optimized Magnetically Shielded (OMS) field topology reduces discharge channel erosion rates compared to conventional Hall thrusters, while also reducing front pole cover erosion compared to traditional magnetically shielded designs. Thruster lifetime extended to 50,000+ hours — a 5× improvement over the ~10,000-hour limit of unshielded designs. A shielded thruster validated this in a 7,205-hour wear test with no measurable performance degradation.</p>
+    </div>
+    <div class="h-card">
+      <div class="h-card-num">04</div>
+      <div class="h-card-q">What does the anode architecture contribute?</div>
+      <h3>Precision Anode Manifold Design</h3>
+      <p>Flow non-uniformity in propellant distribution degrades thruster performance and shortens life. The Hartwigg anode manifold uses modular insertable precision flow restrictor plugs that can be tested and sorted before final assembly. Quality control at the subcomponent level. Plugs can be fabricated from a range of materials including sintered porous metal and precision ruby orifices. Hermetic seals via press fit, threading, or laser welding.</p>
+    </div>
+  </div>
+</div>
+
+<div class="div-section">
+  <div class="div-section-label">Technical Parameters</div>
+  <h2>HARTWIGG<br><span class="gold">SPECIFICATIONS</span></h2>
+  <p>All parameters reflect TRL 4 — component and breadboard validation in laboratory environment. Architecture-level design parameters, not flight-qualified specifications.</p>
+  <table class="spec-table">
+    <tr><td>Division</td><td>Ibom Space — Hartwigg Electric Propulsion</td></tr>
+    <tr><td>Propellant</td><td>Iodine (I₂). Solid storage. Spring-loaded sublimation feed system. No high-pressure vessel required.</td></tr>
+    <tr><td>Thruster Type</td><td>Hall effect thruster (HET). Sub-kilowatt power class. CubeSat and smallsat compatible.</td></tr>
+    <tr><td>Propellant Throughput</td><td><strong>&gt;120 kg</strong></td></tr>
+    <tr><td>Nominal Thruster Efficiency</td><td><strong>&gt;50%</strong></td></tr>
+    <tr><td>Throughput vs Heritage</td><td><strong>2–5× improvement</strong> over existing flight heritage thrusters in the sub-kilowatt class</td></tr>
+    <tr><td>Thruster Lifetime</td><td><strong>50,000+ hours</strong> with optimized magnetic shielding. 5× improvement over unshielded designs.</td></tr>
+    <tr><td>Magnetic Shielding</td><td>Optimized Magnetically Shielded (OMS) field topology. Reduces both discharge channel and front pole cover erosion.</td></tr>
+    <tr><td>PPU Input Voltage</td><td>24–34 VDC. Compatible with 28V unregulated smallsat power systems.</td></tr>
+    <tr><td>PPU Discharge Module Power</td><td>Up to 500W per module. Scalable via parallel modules.</td></tr>
+    <tr><td>PPU Output</td><td>Up to 400 VDC. Full-bridge topology at 50 kHz switching frequency.</td></tr>
+    <tr><td>TRL Status</td><td><strong>TRL 4</strong> — Component and breadboard validation. Proof of concept demonstrated.</td></tr>
+  </table>
+</div>
+
+<div class="div-section">
+  <div class="div-section-label">Who This Is For</div>
+  <h2>THE OPERATORS<br>WHO CANNOT AFFORD<br>TO <span class="gold">STOP</span></h2>
+  <p>Hartwigg Propulsion is for the smallsat and CubeSat operators for whom xenon's constraints are a mission limiter — not a budget line item to optimize around.</p>
+  <p><strong>Defense programs requiring responsive space.</strong> A smallsat that can reposition rapidly in response to a new tasking requirement needs propulsion that does not run out. Iodine's higher propellant density per unit volume and the OMS thruster's 5× life extension changes the mission calculus for persistent presence missions.</p>
+  <p><strong>LEO constellation operators facing xenon supply risk.</strong> As mega-constellations scale, xenon demand will outpace supply. Operators who transition to iodine now build a propulsion supply chain not exposed to the geopolitical and market volatility that will affect xenon-dependent programs.</p>
+  <p><strong>Science and exploration missions beyond LEO.</strong> Lunar and deep space smallsat missions are propellant-mass-fraction-constrained. Iodine's solid storage removes the high-pressure tankage mass penalty. The OMS thruster's lifetime ensures the propulsion system outlives the mission profile.</p>
+  <p><strong>Any operator needing reliable end-of-life deorbit compliance.</strong> As space debris regulations tighten, smallsats that cannot deorbit are a liability. Hartwigg provides the delta-v budget and mission life to execute deorbit without compromising the primary mission.</p>
+  <div class="section-actions">
+    <a href="index.html#contact" class="btn-primary">Request a Technical Briefing →</a>
+    <a href="caelum.html" class="btn-ghost">See Caelum Communications</a>
+  </div>
+</div>
+
+</main>
+<div class="accent-bar"></div>
+<footer>
+  <div class="footer-logo"><div class="footer-logo-mark"><span>I</span></div>IBOM SPACE</div>
+  <div class="footer-usg">A Umanah Systems Group Program</div>
+  <div class="footer-links"><a href="index.html">Home</a><span>·</span><a href="caelum.html">Caelum</a><span>·</span><a href="privacy.html">Privacy Policy</a><span>·</span><a href="terms.html">Terms of Use</a></div>
+  <div class="footer-copy">© Ibom Space. A Umanah Systems Group Program. All rights reserved.</div>
+</footer>
+<script>
+const hamburger=document.getElementById('hamburger');
+const mobileMenu=document.getElementById('mobileMenu');
+hamburger.addEventListener('click',()=>{mobileMenu.classList.toggle('open');});
+function closeMobile(){mobileMenu.classList.remove('open');}
+window.addEventListener('scroll',()=>{const nav=document.querySelector('nav');const inner=document.querySelector('.nav-inner');if(window.scrollY>60){nav.style.background='rgba(9,12,16,0.98)';if(inner)inner.style.padding='12px 48px';}else{nav.style.background='rgba(9,12,16,0.95)';if(inner)inner.style.padding='20px 48px';}});
+</script>
+</body>
+</html>
