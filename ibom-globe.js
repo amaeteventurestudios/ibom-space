@@ -252,11 +252,18 @@ window.IbomGlobe = (function () {
     const aniso   = renderer.capabilities.getMaxAnisotropy
       ? Math.min(8, renderer.capabilities.getMaxAnisotropy()) : 4;
 
+    const dayMap    = loadRequiredTexture(loader, 'images/earth_day.jpg', aniso, true, '[IbomGlobe] detailed Earth texture is missing: images/earth_day.jpg');
+    const cloudMap  = loadRequiredTexture(loader, 'images/earth_clouds.png', aniso, true, '[IbomGlobe] cloud texture is missing: images/earth_clouds.png');
+    const reliefMap = loadRequiredTexture(loader, 'images/earth_normal.jpg', aniso, false, '[IbomGlobe] Earth relief texture is missing: images/earth_normal.jpg');
     const specularMap = makeSpecularTex();
 
     const day = new THREE.Mesh(
       new THREE.SphereGeometry(R, 96, 96),
       new THREE.MeshPhongMaterial({
+        map:         dayMap,
+        emissiveMap: dayMap,
+        bumpMap:     reliefMap,
+        bumpScale:   0.035,
         specularMap: specularMap,
         specular:    new THREE.Color(0x081726),
         shininess:   4,
@@ -265,43 +272,23 @@ window.IbomGlobe = (function () {
       })
     );
     day.rotation.y = 4.05;
-    day.visible = false;
     scene.add(day);
 
     const cloud = new THREE.Mesh(
       new THREE.SphereGeometry(R*1.009, 72, 72),
       new THREE.MeshPhongMaterial({
+        alphaMap:      cloudMap,
         color:         new THREE.Color(0xffffff),
         transparent:   true,
-        opacity:       0.12,
+        opacity:       0.07,
         depthWrite:    false,
-        blending:      THREE.NormalBlending,
+        blending:      THREE.AdditiveBlending,
         emissive:      new THREE.Color(0xffffff),
-        emissiveIntensity: 0.04,
+        emissiveIntensity: 0.02,
       })
     );
     cloud.rotation.y = day.rotation.y + 0.12;
-    cloud.visible = false;
     scene.add(cloud);
-
-    loadRealTexture(loader, 'images/earth_day.jpg', aniso, true, tex => {
-      day.material.map = tex;
-      day.material.emissiveMap = tex;
-      day.material.needsUpdate = true;
-      day.visible = true;
-    }, '[IbomGlobe] detailed Earth texture is missing: images/earth_day.jpg');
-
-    loadRealTexture(loader, 'images/earth_clouds.png', aniso, true, tex => {
-      cloud.material.map = tex;
-      cloud.material.needsUpdate = true;
-      cloud.visible = true;
-    }, '[IbomGlobe] cloud texture is missing: images/earth_clouds.png');
-
-    loadRealTexture(loader, 'images/earth_normal.jpg', aniso, false, tex => {
-      day.material.bumpMap = tex;
-      day.material.bumpScale = 0.035;
-      day.material.needsUpdate = true;
-    }, '[IbomGlobe] Earth relief texture is missing: images/earth_normal.jpg');
 
     return { day, cloud };
   }
@@ -313,32 +300,15 @@ window.IbomGlobe = (function () {
     return texture;
   }
 
-  function loadRealTexture(loader, url, aniso, srgb, onLoad, warning) {
-    loader.load(url, tex => {
-      tex.anisotropy = aniso;
-      applyTextureColor(tex, srgb);
-      onLoad(tex);
+  function loadRequiredTexture(loader, url, aniso, srgb, warning) {
+    const tex = loader.load(url, loaded => {
+      loaded.anisotropy = aniso;
+      applyTextureColor(loaded, srgb);
     }, undefined, err => {
       console.warn(warning, err || '');
     });
-  }
-
-  function safeTexture(loader, url, fallback, aniso, srgb) {
-    const tex = fallback;
     tex.anisotropy = aniso;
     applyTextureColor(tex, srgb);
-    loader.load(url, loaded => {
-      tex.image = loaded.image;
-      tex.needsUpdate = true;
-      tex.anisotropy = aniso;
-      applyTextureColor(tex, srgb);
-    }, undefined, err => {
-      if (url === 'images/earth_day.jpg') {
-        console.warn('[IbomGlobe] detailed Earth texture is missing: images/earth_day.jpg', err || '');
-      } else {
-        console.warn(`[IbomGlobe] texture failed to load: ${url}`, err || '');
-      }
-    });
     return tex;
   }
 
@@ -624,7 +594,7 @@ window.IbomGlobe = (function () {
     const moonR = R * 0.18;
     const basePos = new THREE.Vector3(-2.2, 1.0, 0.2);
 
-    const moonMap = safeTexture(loader, 'images/moon.png', makeFallbackMoonTex(), aniso, true);
+    const moonMap = loadRequiredTexture(loader, 'images/moon.png', aniso, true, '[IbomGlobe] Moon texture is missing: images/moon.png');
     const moonMesh = new THREE.Mesh(
       new THREE.SphereGeometry(moonR, 48, 48),
       new THREE.MeshPhongMaterial({
