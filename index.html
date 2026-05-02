@@ -583,6 +583,48 @@ h2.section-title .gold{color:var(--gold);}
   max-width:720px;letter-spacing:0.02em;
 }
 .platform-together p em{color:var(--accent);font-style:normal;}
+.foundation-rule{width:100%;height:1px;background:var(--rule);margin:56px 0 48px;}
+.foundation-label{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--accent);text-align:center;margin-bottom:18px;
+}
+.foundation-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(34px,4.5vw,68px);letter-spacing:0.03em;
+  color:var(--white);line-height:0.9;text-align:center;margin-bottom:40px;
+}
+.foundation-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:var(--rule);border:1px solid var(--rule);
+  width:100%;
+}
+.foundation-card{
+  background:var(--card);padding:44px 36px;
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;position:relative;overflow:hidden;
+  transition:background 0.25s;
+}
+.foundation-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  transform:scaleX(0);transition:transform 0.4s ease;
+}
+.foundation-card:hover::before{transform:scaleX(1);}
+.foundation-card:hover{background:var(--card2);}
+.foundation-icon{
+  font-family:'Bebas Neue',sans-serif;font-size:44px;
+  color:var(--accent);opacity:0.2;line-height:1;
+  margin-bottom:16px;transition:opacity 0.25s;
+}
+.foundation-card:hover .foundation-icon{opacity:0.6;}
+.foundation-card h3{font-size:15px;font-weight:600;color:var(--light);margin-bottom:12px;letter-spacing:0.02em;text-align:center;}
+.foundation-card p{font-size:13px;color:var(--body);line-height:1.8;text-align:center;}
+.foundation-spec{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--accent);margin-top:20px;line-height:1.6;text-align:center;
+}
 
 /* ═══════════════════════════════════
    WHY NOW — MARKET DATA
@@ -855,6 +897,7 @@ footer{
   .problem-grid{grid-template-columns:1fr 1fr;}
   .cap-grid{grid-template-columns:1fr 1fr;}
   .platform-split{grid-template-columns:1fr;}
+  .foundation-grid{grid-template-columns:1fr;}
   .why-grid{grid-template-columns:1fr 1fr;}
   .join-grid{grid-template-columns:1fr;}
   .hero-orbit,.hero-orbit-2{display:none;}
@@ -921,8 +964,7 @@ footer{
       AFFORDABLE
     </h1>
     <p class="hero-sub">
-      The only CubeSat-native architecture that unifies multi-band RF communications, optical transport, and long-duration iodine propulsion in a single program.<br>
-      <strong>Built for the missions that matter.</strong>
+      The only CubeSat and smallsat-native architecture combining multi-band RF communications, optical transport, long-duration iodine propulsion, a modular COTS spacecraft bus, and electromagnetic cluster control in a single unified platform. 14 validated technology foundations. <strong>Built for the missions that matter.</strong>
     </p>
     <div class="hero-actions">
       <a href="#contact" class="btn-primary">Request a Briefing →</a>
@@ -1173,6 +1215,23 @@ footer{
     <div class="platform-together reveal">
       <p>A smallsat that communicates across multiple bands, senses across multiple domains, and <em>maneuvers responsively</em> is a fundamentally different mission asset than anything commercially available today. That is what Ibom Space is building.</p>
     </div>
+    <div class="foundation-rule reveal"></div>
+    <div class="foundation-label reveal">Platform Foundation</div>
+    <h3 class="foundation-title reveal">THE ARCHITECTURE BENEATH BOTH DIVISIONS</h3>
+    <div class="foundation-grid reveal">
+      <div class="foundation-card">
+        <div class="foundation-icon">BUS</div>
+        <h3>Modular Spacecraft Bus — COTSAT</h3>
+        <p>The Ibom Space platform is built on the Cost Optimized Test of Spacecraft Avionics and Technologies (COTSAT) architecture. COTSAT enables rapid low-cost spacecraft integration using Commercial Off-The Shelf (COTS) electronics protected by a single-atmosphere artificial environment container, replicating Earth-like conditions inside the spacecraft body. The bus provides distributed electrical power with self-monitoring, four independent communications paths, a modular software architecture with independent daemons per subsystem, and three-axis attitude determination and control using four reaction wheels and three magnetic torque coils. The result is a spacecraft bus that can be replicated quickly, updated without redesigning the full platform, and manufactured at a fraction of the cost of traditional space-grade bus architectures.</p>
+        <div class="foundation-spec">COTS Integration · 4 Comms Paths · 3-Axis ADACS · Rapid Replication</div>
+      </div>
+      <div class="foundation-card">
+        <div class="foundation-icon">CLU</div>
+        <h3>Electromagnetic Cluster Control — MEMRIC</h3>
+        <p>The Magnetometer, low-powered ElectroMagnets, and Resonant Inductive Coupling (MEMRIC) architecture enables multiple nanosatellites to cluster, maintain relative positioning, and share power without propellant-based propulsion systems or GPS. Each nanosat in a MEMRIC cluster houses a specific subsystem — communications, propulsion, power, or computation — and operates as a functional building block of the larger distributed spacecraft. The cluster evolves at the pace of technology. As new capabilities become available, individual nanosat units are replaced without redesigning the full system. Patent No: 9,846,023.</p>
+        <div class="foundation-spec">Propellant-Free Clustering · Wireless Power Sharing · Functional Fractionation · Patent 9,846,023</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1180,7 +1239,7 @@ footer{
 <section id="why" class="section">
   <div class="section-inner">
     <div class="section-label reveal">Market Context</div>
-    <h2 class="section-title reveal">THE WINDOW IS <span class="acc">OPEN.</span><br>IT WILL NOT STAY OPEN.</h2>
+    <h2 class="section-title reveal">THE WINDOW IS <span class="acc">OPEN</span><br>IT WILL NOT STAY OPEN</h2>
     <p class="section-body reveal">The proliferated LEO era is not a future scenario. It is the present. The architecture decisions being made now will determine which platforms become the standard for government and commercial small satellite programs over the next decade.</p>
 
     <div class="why-grid reveal">
