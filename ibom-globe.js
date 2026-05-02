@@ -60,11 +60,14 @@ window.IbomGlobe = (function () {
       Math.cos(0.25)*Math.sin(1.0)
     ).normalize();
 
-    const sunLight = new THREE.DirectionalLight(0xfff6e8, 3.2);
+    const sunLight = new THREE.DirectionalLight(0xfff6e8, 2.35);
     sunLight.position.copy(sunDir).multiplyScalar(10);
     scene.add(sunLight);
-    scene.add(new THREE.AmbientLight(0x060c18, 0.5));
-    const rimLight = new THREE.DirectionalLight(0x0a1a60, 0.4);
+    scene.add(new THREE.AmbientLight(0xb9d4ff, 1.05));
+    const fillLight = new THREE.DirectionalLight(0x7fc0ff, 0.95);
+    fillLight.position.set(-5, 2, -6);
+    scene.add(fillLight);
+    const rimLight = new THREE.DirectionalLight(0x0a1a60, 0.55);
     rimLight.position.set(-8,-1,-4);
     scene.add(rimLight);
 
@@ -72,6 +75,7 @@ window.IbomGlobe = (function () {
     const earth = buildEarth(scene, R, renderer);
     buildAtmo(scene, R, sunDir);
     buildShells(scene, R);
+    const moon = buildMoon(scene, R, renderer);
 
     const sats  = buildSatellites(R, SAT_BG, SAT_CT, SAT_EV, TRAIL_CT, TRAIL_EV);
     const bgPts = buildBgPoints(scene, sats);
@@ -146,6 +150,7 @@ window.IbomGlobe = (function () {
       const earthRate = TAU/(1440*60);
       earth.day.rotation.y   += dt*earthRate;
       earth.cloud.rotation.y += dt*earthRate*1.06;
+      tickMoon(moon, dt, camera);
 
       const camU = camera.position.clone().normalize();
       sats.forEach(s => {
@@ -247,52 +252,101 @@ window.IbomGlobe = (function () {
     const aniso   = renderer.capabilities.getMaxAnisotropy
       ? Math.min(8, renderer.capabilities.getMaxAnisotropy()) : 4;
 
-    const loadTex = url => {
-      const t = loader.load(url);
-      t.colorSpace = THREE.SRGBColorSpace;
-      t.anisotropy = aniso;
-      return t;
-    };
-
-    const dayMap    = loadTex('images/earth_day.jpg');
-    const cloudMap  = loadTex('images/earth_clouds.png');
-    const normalMap = loader.load('images/earth_normal.jpg');
-    normalMap.anisotropy = aniso;
-
     const specularMap = makeSpecularTex();
 
     const day = new THREE.Mesh(
       new THREE.SphereGeometry(R, 96, 96),
       new THREE.MeshPhongMaterial({
-        map:         dayMap,
-        normalMap:   normalMap,
-        normalScale: new THREE.Vector2(0.55, 0.55),
         specularMap: specularMap,
-        specular:    new THREE.Color(0x365f86),
-        shininess:   18,
-        emissive:    new THREE.Color(0x02060a),
-        emissiveIntensity: 0.10,
+        specular:    new THREE.Color(0x081726),
+        shininess:   4,
+        emissive:    new THREE.Color(0xffffff),
+        emissiveIntensity: 0.48,
       })
     );
-    day.rotation.y = 2.2;
+    day.rotation.y = 4.05;
+    day.visible = false;
     scene.add(day);
 
     const cloud = new THREE.Mesh(
       new THREE.SphereGeometry(R*1.009, 72, 72),
       new THREE.MeshPhongMaterial({
-        map:           cloudMap,
+        color:         new THREE.Color(0xffffff),
         transparent:   true,
-        opacity:       0.22,
+        opacity:       0.12,
         depthWrite:    false,
         blending:      THREE.NormalBlending,
-        emissive:      new THREE.Color(0x101822),
+        emissive:      new THREE.Color(0xffffff),
         emissiveIntensity: 0.04,
       })
     );
     cloud.rotation.y = day.rotation.y + 0.12;
+    cloud.visible = false;
     scene.add(cloud);
 
+    loadRealTexture(loader, 'images/earth_day.jpg', aniso, true, tex => {
+      day.material.map = tex;
+      day.material.emissiveMap = tex;
+      day.material.needsUpdate = true;
+      day.visible = true;
+    }, '[IbomGlobe] detailed Earth texture is missing: images/earth_day.jpg');
+
+    loadRealTexture(loader, 'images/earth_clouds.png', aniso, true, tex => {
+      cloud.material.map = tex;
+      cloud.material.needsUpdate = true;
+      cloud.visible = true;
+    }, '[IbomGlobe] cloud texture is missing: images/earth_clouds.png');
+
+    loadRealTexture(loader, 'images/earth_normal.jpg', aniso, false, tex => {
+      day.material.bumpMap = tex;
+      day.material.bumpScale = 0.035;
+      day.material.needsUpdate = true;
+    }, '[IbomGlobe] Earth relief texture is missing: images/earth_normal.jpg');
+
     return { day, cloud };
+  }
+
+  function applyTextureColor(texture, srgb) {
+    if (!texture) return texture;
+    if (srgb && THREE.sRGBEncoding !== undefined) texture.encoding = THREE.sRGBEncoding;
+    else if (srgb && THREE.SRGBColorSpace !== undefined) texture.colorSpace = THREE.SRGBColorSpace;
+    return texture;
+  }
+
+  function loadRealTexture(loader, url, aniso, srgb, onLoad, warning) {
+    loader.load(url, tex => {
+      tex.anisotropy = aniso;
+      applyTextureColor(tex, srgb);
+      onLoad(tex);
+    }, undefined, err => {
+      console.warn(warning, err || '');
+    });
+  }
+
+  function safeTexture(loader, url, fallback, aniso, srgb) {
+    const tex = fallback;
+    tex.anisotropy = aniso;
+    applyTextureColor(tex, srgb);
+    loader.load(url, loaded => {
+      tex.image = loaded.image;
+      tex.needsUpdate = true;
+      tex.anisotropy = aniso;
+      applyTextureColor(tex, srgb);
+    }, undefined, err => {
+      if (url === 'images/earth_day.jpg') {
+        console.warn('[IbomGlobe] detailed Earth texture is missing: images/earth_day.jpg', err || '');
+      } else {
+        console.warn(`[IbomGlobe] texture failed to load: ${url}`, err || '');
+      }
+    });
+    return tex;
+  }
+
+  function canvasTexture(width, height, painter, srgb) {
+    const c = document.createElement('canvas');
+    c.width = width; c.height = height;
+    painter(c.getContext('2d'), width, height);
+    return applyTextureColor(new THREE.CanvasTexture(c), srgb);
   }
 
   function makeSpecularTex() {
@@ -560,6 +614,87 @@ window.IbomGlobe = (function () {
     });
     if(found){orbitLine.visible=true;refreshOrbitLine(orbitLine,found);}
     else orbitLine.visible=false;
+  }
+
+  /* ── MOON ───────────────────────────────────────────────────── */
+  function buildMoon(scene, R, renderer) {
+    const loader = new THREE.TextureLoader();
+    const aniso = renderer.capabilities.getMaxAnisotropy
+      ? Math.min(8, renderer.capabilities.getMaxAnisotropy()) : 4;
+    const moonR = R * 0.18;
+    const basePos = new THREE.Vector3(-2.2, 1.0, 0.2);
+
+    const moonMap = safeTexture(loader, 'images/moon.png', makeFallbackMoonTex(), aniso, true);
+    const moonMesh = new THREE.Mesh(
+      new THREE.SphereGeometry(moonR, 48, 48),
+      new THREE.MeshPhongMaterial({
+        map: moonMap,
+        color: new THREE.Color(0xd7d9df),
+        emissive: new THREE.Color(0x252a36),
+        emissiveIntensity: 0.16,
+        shininess: 4,
+      })
+    );
+
+    const halo = new THREE.Mesh(
+      new THREE.PlaneGeometry(moonR * 5.2, moonR * 5.2),
+      new THREE.MeshBasicMaterial({
+        map: makeMoonHaloTex(),
+        transparent: true,
+        opacity: 0.82,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
+        side: THREE.DoubleSide,
+      })
+    );
+
+    const group = new THREE.Object3D();
+    group.add(moonMesh);
+    group.add(halo);
+    scene.add(group);
+    group.position.copy(basePos);
+
+    return { group, moonMesh, halo, basePos, drift: 0 };
+  }
+
+  function tickMoon(moon, dt, camera) {
+    if (!moon || !moon.group) return;
+    moon.drift += dt * 0.0008;
+    moon.group.position.set(
+      moon.basePos.x + Math.sin(moon.drift) * 0.04,
+      moon.basePos.y + Math.cos(moon.drift * 0.8) * 0.025,
+      moon.basePos.z
+    );
+    moon.moonMesh.rotation.y += 0.00018;
+    moon.moonMesh.rotation.x = -0.08;
+    if (moon.halo && camera) moon.halo.lookAt(camera.position);
+  }
+
+  function makeFallbackMoonTex() {
+    return canvasTexture(512, 512, (ctx, W, H) => {
+      const g = ctx.createRadialGradient(W*.38,H*.35,4,W*.5,H*.5,W*.52);
+      g.addColorStop(0,'#c8ccd4');
+      g.addColorStop(.55,'#8e929c');
+      g.addColorStop(1,'#5f636d');
+      ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+      for(let i=0;i<90;i++){
+        const x=Math.random()*W,y=Math.random()*H,r=2+Math.random()*16;
+        ctx.beginPath();ctx.arc(x,y,r,0,TAU);
+        ctx.fillStyle='rgba(50,52,60,.18)';ctx.fill();
+        ctx.strokeStyle='rgba(220,224,234,.22)';ctx.lineWidth=1;ctx.stroke();
+      }
+    }, true);
+  }
+
+  function makeMoonHaloTex() {
+    return canvasTexture(128, 128, (ctx, W, H) => {
+      ctx.clearRect(0,0,W,H);
+      const g = ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,W/2);
+      g.addColorStop(0,'rgba(210,225,255,0.20)');
+      g.addColorStop(.42,'rgba(100,160,255,0.08)');
+      g.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+    }, true);
   }
 
   return { init };
