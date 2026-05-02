@@ -1,6 +1,6 @@
 /**
  * IBOM SPACE GLOBE ENGINE
- * Stripped from LoqSatGlobe v5 — Umanah Systems Group
+ * Stripped from LoqSatGlobe v5 - Umanah Systems Group
  * Day texture only. Speed hardcoded at 0.01. No night layer.
  */
 
@@ -23,7 +23,7 @@ window.IbomGlobe = (function () {
     const el = document.getElementById(containerId);
     if (!el) { console.warn('[IbomGlobe] container not found:', containerId); return null; }
 
-    const SPEED       = 0.01;  // hardcoded — do not expose
+    const SPEED       = 0.01;  // hardcoded, do not expose
     const SPEED_SCALE = 60;
     const R           = 1.0;
     const SAT_BG      = 80;
@@ -53,7 +53,7 @@ window.IbomGlobe = (function () {
                      dragging:false, didDrag:false, px:0, py:0 };
     setupCamera(el, cam);
 
-    /* sun — fixed position, full day side visible */
+    /* sun: fixed position, full day side visible */
     const sunDir = new THREE.Vector3(
       Math.cos(0.25)*Math.cos(1.0),
       Math.sin(0.25),
@@ -243,7 +243,7 @@ window.IbomGlobe = (function () {
     });
   }
 
-  /* ── EARTH — DAY ONLY ────────────────────────────────────────── */
+  /* ── EARTH: DAY ONLY ────────────────────────────────────────── */
   function buildEarth(scene, R, renderer) {
     const loader  = new THREE.TextureLoader();
     const aniso   = renderer.capabilities.getMaxAnisotropy
