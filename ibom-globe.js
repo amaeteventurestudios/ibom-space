@@ -48,8 +48,8 @@ window.IbomGlobe = (function () {
     scene.background = new THREE.Color(0x020406);
 
     const camera = new THREE.PerspectiveCamera(40, W/H, 0.005, 300);
-    const cam    = { phi:0.18, theta:0.6, radius:3.2,
-                     tPhi:0.18, tTheta:0.6, tRadius:3.2,
+    const cam    = { phi:0.18, theta:0, radius:2.55,
+                     tPhi:0.18, tTheta:0, tRadius:2.55,
                      dragging:false, didDrag:false, px:0, py:0 };
     setupCamera(el, cam);
 
@@ -60,14 +60,11 @@ window.IbomGlobe = (function () {
       Math.cos(0.25)*Math.sin(1.0)
     ).normalize();
 
-    const sunLight = new THREE.DirectionalLight(0xfff6e8, 2.35);
+    const sunLight = new THREE.DirectionalLight(0xfff6e8, 3.2);
     sunLight.position.copy(sunDir).multiplyScalar(10);
     scene.add(sunLight);
-    scene.add(new THREE.AmbientLight(0xb9d4ff, 1.05));
-    const fillLight = new THREE.DirectionalLight(0x7fc0ff, 0.95);
-    fillLight.position.set(-5, 2, -6);
-    scene.add(fillLight);
-    const rimLight = new THREE.DirectionalLight(0x0a1a60, 0.55);
+    scene.add(new THREE.AmbientLight(0x26334a, 0.72));
+    const rimLight = new THREE.DirectionalLight(0x0a1a60, 0.4);
     rimLight.position.set(-8,-1,-4);
     scene.add(rimLight);
 
@@ -254,37 +251,35 @@ window.IbomGlobe = (function () {
 
     const dayMap    = loadRequiredTexture(loader, 'images/earth_day.jpg', aniso, true, '[IbomGlobe] detailed Earth texture is missing: images/earth_day.jpg');
     const cloudMap  = loadRequiredTexture(loader, 'images/earth_clouds.png', aniso, true, '[IbomGlobe] cloud texture is missing: images/earth_clouds.png');
-    const reliefMap = loadRequiredTexture(loader, 'images/earth_normal.jpg', aniso, false, '[IbomGlobe] Earth relief texture is missing: images/earth_normal.jpg');
+    const normalMap = loadRequiredTexture(loader, 'images/earth_normal.jpg', aniso, false, '[IbomGlobe] Earth relief texture is missing: images/earth_normal.jpg');
     const specularMap = makeSpecularTex();
 
     const day = new THREE.Mesh(
       new THREE.SphereGeometry(R, 96, 96),
       new THREE.MeshPhongMaterial({
         map:         dayMap,
-        emissiveMap: dayMap,
-        bumpMap:     reliefMap,
-        bumpScale:   0.035,
+        normalMap:   normalMap,
+        normalScale: new THREE.Vector2(0.55, 0.55),
         specularMap: specularMap,
-        specular:    new THREE.Color(0x081726),
-        shininess:   4,
-        emissive:    new THREE.Color(0xffffff),
-        emissiveIntensity: 0.48,
+        specular:    new THREE.Color(0x365f86),
+        shininess:   18,
+        emissive:    new THREE.Color(0x02060a),
+        emissiveIntensity: 0.16,
       })
     );
-    day.rotation.y = 4.05;
+    day.rotation.y = 2.2;
     scene.add(day);
 
     const cloud = new THREE.Mesh(
       new THREE.SphereGeometry(R*1.009, 72, 72),
       new THREE.MeshPhongMaterial({
-        alphaMap:      cloudMap,
-        color:         new THREE.Color(0xffffff),
+        map:           cloudMap,
         transparent:   true,
-        opacity:       0.07,
+        opacity:       0.24,
         depthWrite:    false,
-        blending:      THREE.AdditiveBlending,
-        emissive:      new THREE.Color(0xffffff),
-        emissiveIntensity: 0.02,
+        blending:      THREE.NormalBlending,
+        emissive:      new THREE.Color(0x101822),
+        emissiveIntensity: 0.05,
       })
     );
     cloud.rotation.y = day.rotation.y + 0.12;
