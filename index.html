@@ -240,6 +240,7 @@ nav{
   letter-spacing:0.26em;text-transform:uppercase;
   color:var(--accent);margin-bottom:32px;
   display:flex;align-items:center;justify-content:center;gap:16px;
+  flex-wrap:wrap;text-align:center;
   animation:fadeIn 0.8s ease 0.2s both;
 }
 .hero-eyebrow::before,.hero-eyebrow::after{
@@ -583,17 +584,12 @@ h2.section-title .gold{color:var(--gold);}
   max-width:720px;letter-spacing:0.02em;
 }
 .platform-together p em{color:var(--accent);font-style:normal;}
-.foundation-rule{width:100%;height:1px;background:var(--rule);margin:56px 0 48px;}
-.foundation-label{
-  font-family:'DM Mono',monospace;font-size:10px;
-  letter-spacing:0.22em;text-transform:uppercase;
-  color:var(--accent);text-align:center;margin-bottom:18px;
-}
-.foundation-title{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(34px,4.5vw,68px);letter-spacing:0.03em;
-  color:var(--white);line-height:0.9;text-align:center;margin-bottom:40px;
-}
+.foundation-rule{height:1px;background:var(--rule);width:100%;margin:0;}
+.foundation-wrap{width:100%;padding:64px 40px;background:var(--surface);display:flex;flex-direction:column;align-items:center;text-align:center;}
+.foundation-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;display:flex;align-items:center;justify-content:center;gap:14px;text-align:center;}
+.foundation-label::before,.foundation-label::after{content:'';display:block;width:32px;height:1px;background:var(--accent);opacity:0.5;}
+.foundation-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,4vw,56px);letter-spacing:0.03em;color:var(--white);line-height:0.9;text-align:center;margin-bottom:16px;}
+.foundation-body{font-size:14px;color:var(--body);line-height:1.8;max-width:580px;text-align:center;margin-bottom:48px;}
 .foundation-grid{
   display:grid;grid-template-columns:1fr 1fr;
   gap:1px;background:var(--rule);border:1px solid var(--rule);
@@ -613,17 +609,17 @@ h2.section-title .gold{color:var(--gold);}
 .foundation-card:hover::before{transform:scaleX(1);}
 .foundation-card:hover{background:var(--card2);}
 .foundation-icon{
-  font-family:'Bebas Neue',sans-serif;font-size:44px;
+  font-family:'Bebas Neue',sans-serif;font-size:40px;
   color:var(--accent);opacity:0.2;line-height:1;
-  margin-bottom:16px;transition:opacity 0.25s;
+  margin-bottom:14px;transition:opacity 0.25s;
 }
-.foundation-card:hover .foundation-icon{opacity:0.6;}
-.foundation-card h3{font-size:15px;font-weight:600;color:var(--light);margin-bottom:12px;letter-spacing:0.02em;text-align:center;}
+.foundation-card:hover .foundation-icon{opacity:0.65;}
+.foundation-card h3{font-size:14px;font-weight:600;color:var(--light);margin-bottom:12px;letter-spacing:0.02em;text-align:center;}
 .foundation-card p{font-size:13px;color:var(--body);line-height:1.8;text-align:center;}
 .foundation-spec{
   font-family:'DM Mono',monospace;font-size:9px;
-  letter-spacing:0.14em;text-transform:uppercase;
-  color:var(--accent);margin-top:20px;line-height:1.6;text-align:center;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--accent);margin-top:14px;opacity:0.7;line-height:1.6;text-align:center;
 }
 
 /* ═══════════════════════════════════
@@ -890,6 +886,7 @@ footer{
   .nav-links,.nav-cta{display:none;}
   .hamburger{display:flex;}
   #hero{padding:110px 20px 60px;}
+  .hero-eyebrow{font-size:9px;letter-spacing:0.18em;}
   .section{padding:80px 20px;}
   #trl{padding:60px 20px;}
   .hero-stats{flex-direction:column;gap:1px;}
@@ -905,6 +902,7 @@ footer{
 }
 @media(max-width:480px){
   .hero-headline{font-size:clamp(64px,18vw,100px);}
+  .hero-eyebrow::before,.hero-eyebrow::after{display:none;}
   .hero-actions{flex-direction:column;width:100%;}
   .btn-primary,.btn-ghost{width:100%;text-align:center;}
   .problem-grid{grid-template-columns:1fr;}
@@ -1216,20 +1214,23 @@ footer{
       <p>A smallsat that communicates across multiple bands, senses across multiple domains, and <em>maneuvers responsively</em> is a fundamentally different mission asset than anything commercially available today. That is what Ibom Space is building.</p>
     </div>
     <div class="foundation-rule reveal"></div>
-    <div class="foundation-label reveal">Platform Foundation</div>
-    <h3 class="foundation-title reveal">THE ARCHITECTURE BENEATH BOTH DIVISIONS</h3>
-    <div class="foundation-grid reveal">
-      <div class="foundation-card">
-        <div class="foundation-icon">BUS</div>
-        <h3>Modular Spacecraft Bus — COTSAT</h3>
-        <p>The Ibom Space platform is built on the Cost Optimized Test of Spacecraft Avionics and Technologies (COTSAT) architecture. COTSAT enables rapid low-cost spacecraft integration using Commercial Off-The Shelf (COTS) electronics protected by a single-atmosphere artificial environment container, replicating Earth-like conditions inside the spacecraft body. The bus provides distributed electrical power with self-monitoring, four independent communications paths, a modular software architecture with independent daemons per subsystem, and three-axis attitude determination and control using four reaction wheels and three magnetic torque coils. The result is a spacecraft bus that can be replicated quickly, updated without redesigning the full platform, and manufactured at a fraction of the cost of traditional space-grade bus architectures.</p>
-        <div class="foundation-spec">COTS Integration · 4 Comms Paths · 3-Axis ADACS · Rapid Replication</div>
-      </div>
-      <div class="foundation-card">
-        <div class="foundation-icon">CLU</div>
-        <h3>Electromagnetic Cluster Control — MEMRIC</h3>
-        <p>The Magnetometer, low-powered ElectroMagnets, and Resonant Inductive Coupling (MEMRIC) architecture enables multiple nanosatellites to cluster, maintain relative positioning, and share power without propellant-based propulsion systems or GPS. Each nanosat in a MEMRIC cluster houses a specific subsystem — communications, propulsion, power, or computation — and operates as a functional building block of the larger distributed spacecraft. The cluster evolves at the pace of technology. As new capabilities become available, individual nanosat units are replaced without redesigning the full system. Patent No: 9,846,023.</p>
-        <div class="foundation-spec">Propellant-Free Clustering · Wireless Power Sharing · Functional Fractionation · Patent 9,846,023</div>
+    <div class="foundation-wrap reveal">
+      <div class="foundation-label">Platform Foundation</div>
+      <h3 class="foundation-title">THE FOUNDATION BENEATH<br>BOTH DIVISIONS</h3>
+      <p class="foundation-body">Caelum and Hartwigg sit on a validated spacecraft bus and cluster architecture. Two additional patents define how the platform is built, integrated, and evolved over time.</p>
+      <div class="foundation-grid">
+        <div class="foundation-card">
+          <div class="foundation-icon">BUS</div>
+          <h3>Modular Spacecraft Bus — COTSAT</h3>
+          <p>A modular low-cost spacecraft bus enabling rapid integration of COTS electronics in a space environment. Distributed power, self-monitoring, four independent communications paths, modular software daemons per subsystem, and three-axis attitude control. Replicable. Updateable. Manufacturable at a fraction of traditional space-grade bus cost.</p>
+          <div class="foundation-spec">COTS Integration · 4 Comms Paths · 3-Axis ADACS · Rapid Replication</div>
+        </div>
+        <div class="foundation-card">
+          <div class="foundation-icon">CLU</div>
+          <h3>Electromagnetic Cluster Control — MEMRIC</h3>
+          <p>A propellant-free nanosatellite clustering architecture using electromagnets and resonant inductive coupling for relative positioning and wireless power sharing. Each nanosat in a MEMRIC cluster houses a distinct subsystem — communications, propulsion, power, or computation — operating as a modular building block. The cluster evolves without redesigning the full platform. Patent No: 9,846,023.</p>
+          <div class="foundation-spec">Propellant-Free Clustering · Wireless Power Sharing · Functional Fractionation · Patent 9,846,023</div>
+        </div>
       </div>
     </div>
   </div>
