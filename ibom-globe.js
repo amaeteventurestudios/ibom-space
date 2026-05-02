@@ -48,8 +48,8 @@ window.IbomGlobe = (function () {
     scene.background = new THREE.Color(0x020406);
 
     const camera = new THREE.PerspectiveCamera(40, W/H, 0.005, 300);
-    const cam    = { phi:0.18, theta:0, radius:2.55,
-                     tPhi:0.18, tTheta:0, tRadius:2.55,
+    const cam    = { phi:0.18, theta:0, radius:3.0,
+                     tPhi:0.18, tTheta:0, tRadius:3.0,
                      dragging:false, didDrag:false, px:0, py:0 };
     setupCamera(el, cam);
 
@@ -267,7 +267,7 @@ window.IbomGlobe = (function () {
         emissiveIntensity: 0.16,
       })
     );
-    day.rotation.y = 2.2;
+    day.rotation.y = -0.15;
     scene.add(day);
 
     const cloud = new THREE.Mesh(
