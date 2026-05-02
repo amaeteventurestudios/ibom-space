@@ -60,11 +60,11 @@ window.IbomGlobe = (function () {
       Math.cos(0.25)*Math.sin(1.0)
     ).normalize();
 
-    const sunLight = new THREE.DirectionalLight(0xfff6e8, 3.2);
+    const sunLight = new THREE.DirectionalLight(0xfff6e8, 1.45);
     sunLight.position.copy(sunDir).multiplyScalar(10);
     scene.add(sunLight);
-    scene.add(new THREE.AmbientLight(0x26334a, 0.72));
-    const rimLight = new THREE.DirectionalLight(0x0a1a60, 0.4);
+    scene.add(new THREE.AmbientLight(0xf2f7ff, 1.35));
+    const rimLight = new THREE.DirectionalLight(0x0a1a60, 0.28);
     rimLight.position.set(-8,-1,-4);
     scene.add(rimLight);
 
@@ -258,13 +258,14 @@ window.IbomGlobe = (function () {
       new THREE.SphereGeometry(R, 96, 96),
       new THREE.MeshPhongMaterial({
         map:         dayMap,
+        emissiveMap: dayMap,
         normalMap:   normalMap,
-        normalScale: new THREE.Vector2(0.55, 0.55),
+        normalScale: new THREE.Vector2(0.22, 0.22),
         specularMap: specularMap,
-        specular:    new THREE.Color(0x365f86),
-        shininess:   18,
-        emissive:    new THREE.Color(0x02060a),
-        emissiveIntensity: 0.16,
+        specular:    new THREE.Color(0x10243c),
+        shininess:   6,
+        emissive:    new THREE.Color(0xffffff),
+        emissiveIntensity: 0.72,
       })
     );
     day.rotation.y = -0.15;
@@ -272,14 +273,13 @@ window.IbomGlobe = (function () {
 
     const cloud = new THREE.Mesh(
       new THREE.SphereGeometry(R*1.009, 72, 72),
-      new THREE.MeshPhongMaterial({
+      new THREE.MeshBasicMaterial({
         map:           cloudMap,
+        color:         new THREE.Color(0xffffff),
         transparent:   true,
-        opacity:       0.24,
+        opacity:       0.2,
         depthWrite:    false,
-        blending:      THREE.NormalBlending,
-        emissive:      new THREE.Color(0x101822),
-        emissiveIntensity: 0.05,
+        blending:      THREE.AdditiveBlending,
       })
     );
     cloud.rotation.y = day.rotation.y + 0.12;
