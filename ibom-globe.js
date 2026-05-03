@@ -22,6 +22,7 @@ window.IbomGlobe = (function () {
   function init(containerId) {
     const el = document.getElementById(containerId);
     if (!el) { console.warn('[IbomGlobe] container not found:', containerId); return null; }
+    if (!supportsWebGL()) return null;
 
     const SPEED       = 0.01;  // hardcoded, do not expose
     const SPEED_SCALE = 60;
@@ -179,6 +180,12 @@ window.IbomGlobe = (function () {
         renderer.domElement.parentNode?.removeChild(renderer.domElement);
       }
     };
+  }
+
+  function supportsWebGL() {
+    const canvas = document.createElement('canvas');
+    return !!(window.WebGLRenderingContext &&
+      (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')));
   }
 
   /* ── CAMERA CONTROLS ─────────────────────────────────────────── */
